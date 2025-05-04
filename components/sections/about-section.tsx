@@ -8,13 +8,7 @@ import { SocialIcons } from "../ui/social-icons"
 export default function AboutSection() {
   return (
     <section className="space-y-8">
-      <Grid>
-        <div className="border border-blue-500 p-4 aspect-video"></div>
-        <div className="bg-gray-900 p-4 aspect-video"></div>
-        <div className="bg-gray-900 p-4 aspect-video"></div>
-        <div className="bg-gray-900 p-4 aspect-video"></div>
-      </Grid>
-
+ 
       <div className="space-y-4">
         <motion.h2
           className="text-2xl font-bold"

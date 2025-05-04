@@ -9,19 +9,6 @@ export default function ServicesSection() {
 
   return (
     <section className="space-y-8">
-      <Grid>
-        {services.map((_, index) => (
-          <motion.div
-            key={index}
-            className="bg-gray-900 p-4 aspect-square"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: index * 0.1 }}
-            whileHover={{ scale: 1.05, backgroundColor: "#1a1a1a" }}
-          ></motion.div>
-        ))}
-      </Grid>
-
       <div className="space-y-4">
         <motion.div
           className="flex items-center justify-between"
