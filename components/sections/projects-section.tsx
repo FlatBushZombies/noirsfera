@@ -9,19 +9,7 @@ export default function ProjectsSection() {
 
   return (
     <section className="space-y-8">
-      <Grid columns={2}>
-        {projects.map((_, index) => (
-          <motion.div
-            key={index}
-            className="bg-gray-900 p-4 aspect-video"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1 }}
-            whileHover={{ scale: 1.03, backgroundColor: "#1a1a1a" }}
-          ></motion.div>
-        ))}
-      </Grid>
-
+     
       <div className="space-y-4">
         <motion.h2 className="text-2xl font-bold" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
           projects:

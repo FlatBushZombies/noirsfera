@@ -42,7 +42,7 @@ export default function AboutSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
         >
-          Ready to turn your ideas into reality? Here at "Nor Stera", we are focused on helping you evolve your
+          Ready to turn your ideas into reality? Here at "Noir Stera", we are focused on helping you evolve your
           business, ideas and visions to reach your targeted audience through the creation of engaging, innovative, and
           high quality software solutions. We are a team of passionate and independent creators, we have pride in these
           partnerships, and we are always open to future collaborations.

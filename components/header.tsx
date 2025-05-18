@@ -29,7 +29,7 @@ export default function Header() {
       <div className="container mx-auto flex justify-between items-center">
         <Link href="/">
           <motion.div className="text-xl font-bold text-white" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            NoirSfera
+            
           </motion.div>
         </Link>
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="cursor-pointer">

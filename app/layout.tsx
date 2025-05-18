@@ -1,11 +1,12 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+
+import { Roboto } from "next/font/google"
 import "./globals.css"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 
-const inter = Inter({ subsets: ["latin"] })
+const roboto = Roboto({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "NoirSfera",
@@ -19,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-black text-white min-h-screen flex flex-col`}>
+      <body className={`${roboto.className} bg-black text-white min-h-screen flex flex-col`}>
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
