@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { Grid } from "../ui/grid"
 import { Info } from "lucide-react"
+import Features from "../Features"
 
 export default function ServicesSection() {
   const services = Array(6).fill(null)
@@ -24,7 +25,7 @@ export default function ServicesSection() {
             <Info className="h-5 w-5 text-cyan-400" />
           </motion.div>
         </motion.div>
-
+        <Features />
         <motion.p
           className="text-gray-400 text-sm"
           initial={{ opacity: 0, y: 20 }}
