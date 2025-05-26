@@ -7,7 +7,8 @@ import ServicesSection from "@/components/sections/services-section"
 import ProjectsSection from "@/components/sections/projects-section"
 import ContactSection from "@/components/sections/contact-section"
 import AboutSection from "@/components/sections/about-section"
-import Navigation from "@/components/navigation"
+import { AppSidebar } from "@/components/app-sidebar"
+import { SidebarProvider } from "@/components/ui/sidebar"
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("about")
@@ -24,7 +25,9 @@ export default function Home() {
     <div className="container mx-auto px-4 py-8">
       <div className="flex flex-col md:flex-row gap-8">
         <div className="md:w-1/4">
-          <Navigation activeSection={activeSection} setActiveSection={setActiveSection} />
+        <SidebarProvider>
+          <AppSidebar activeSection={activeSection} setActiveSection={setActiveSection} />
+          </SidebarProvider>
         </div>
         <div className="md:w-3/4">
           <AnimatePresence mode="wait">
