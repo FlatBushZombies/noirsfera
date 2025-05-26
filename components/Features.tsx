@@ -12,7 +12,7 @@ export function Features() {
       description: "We build scalable web applications using modern technologies and best practices.",
       bgColor: "bg-sky-400",
       textColor: "text-blue-900",
-      image: "/images/web-development.jpg",
+      image: "/mobile-app.png",
       link: "#web-development",
     },
     {
@@ -21,7 +21,7 @@ export function Features() {
       description: "Native and cross-platform mobile solutions that deliver exceptional user experiences.",
       bgColor: "bg-emerald-400",
       textColor: "text-emerald-900",
-      image: "/images/mobile-development.jpg",
+      image: "/phone-app.png",
       link: "#mobile-development",
     },
     {
