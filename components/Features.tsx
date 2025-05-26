@@ -1,56 +1,97 @@
-import { FEATURES } from "@/constants"
+"use client"
+
+import { ArrowRight } from "lucide-react"
+import { motion } from "framer-motion"
 import Image from "next/image"
 
-const Features = () => {
-  return (
-    <section className='flex-col flex items-center justify-center overflow-hidden bg-feature-bg bg-center bg-no-repeat py-24'>
-      <div className='mx-auto max-w-[1440px] px-6 lg:px-20 3xl:px-0 relative w-full flex justify-end '>
-        <div className="flex flex-1 lg:min-h-[900px]">
-          <Image src="/phone.png" alt="phone" width={440} height={1000} className="feature-phone"/>
-        </div>
+export function Features() {
+  const services = [
+    {
+      id: "web-development",
+      title: "Full-Stack Web Development",
+      description: "We build scalable web applications using modern technologies and best practices.",
+      bgColor: "bg-sky-400",
+      textColor: "text-blue-900",
+      image: "/images/web-development.jpg",
+      link: "#web-development",
+    },
+    {
+      id: "mobile-development",
+      title: "Mobile App Development",
+      description: "Native and cross-platform mobile solutions that deliver exceptional user experiences.",
+      bgColor: "bg-emerald-400",
+      textColor: "text-emerald-900",
+      image: "/images/mobile-development.jpg",
+      link: "#mobile-development",
+    },
+    {
+      id: "cloud-solutions",
+      title: "Cloud & DevOps Solutions",
+      description: "Scalable cloud infrastructure and automated deployment pipelines for modern applications.",
+      bgColor: "bg-indigo-600",
+      textColor: "text-white",
+      image: "/images/cloud-solutions.jpg",
+      link: "#cloud-solutions",
+    },
+    {
+      id: "ai-ml",
+      title: "AI & Machine Learning",
+      description: "Intelligent solutions powered by artificial intelligence and machine learning algorithms.",
+      bgColor: "bg-yellow-400",
+      textColor: "text-yellow-900",
+      image: "/images/ai-ml.jpg",
+      link: "#ai-ml",
+    },
+  ]
 
-        <div className="z-20 flex w-full flex-col lg:w-[60%]">
-          <div className="relative">
-            <Image src="/camp.svg" alt="camp" width={50} height={50}
-            className="absolute left-[-5px] top-[-28px] w-10 lg:w-[50px]"/>
-            <h2 className="bold-10 lg:bold-64">Our Features</h2>
-          </div>
-          <ul className="mt-10 grid gap-10 md:grid-cols-2 lg:mt-20 lg:gap-20">
-            {FEATURES.map((feature) => (
-              <FeatureItem 
-              key={feature.title}
-              title={feature.title}
-              icon={feature.icon}
-              description={feature.description}
-              />
-            ))}
-          </ul>
+  return (
+    <section className="py-16 px-6 bg-black">
+      <div className="max-w-7xl mx-auto">
+    
+
+        {/* Services grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {services.map((service, index) => (
+            <motion.div
+              key={service.id}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              whileHover={{ scale: 1.02 }}
+              className={`${service.bgColor} rounded-2xl p-8 cursor-pointer group transition-all duration-300 hover:shadow-xl relative overflow-hidden min-h-[320px] flex flex-col justify-between`}
+            >
+              {/* Content */}
+              <div className="relative z-10">
+                <div className="flex items-start justify-between mb-4">
+                  <h2 className={`text-2xl md:text-3xl font-bold ${service.textColor} leading-tight max-w-[70%]`}>
+                    {service.title}
+                  </h2>
+                  <ArrowRight
+                    className={`${service.textColor} w-6 h-6 group-hover:translate-x-1 transition-transform duration-300`}
+                  />
+                </div>
+
+                <p className={`${service.textColor} text-lg opacity-90 mb-6 max-w-md`}>{service.description}</p>
+
+                {/* Additional info link */}
+                <div className="flex items-center gap-2">
+                  <span className={`${service.textColor} text-sm font-medium opacity-80`}>Learn more</span>
+                  <ArrowRight className={`${service.textColor} w-4 h-4 opacity-80`} />
+                </div>
+              </div>
+
+              {/* Image */}
+              <div className="absolute bottom-4 right-4 w-32 h-24 rounded-lg overflow-hidden opacity-30 group-hover:opacity-50 transition-opacity duration-300">
+                <Image src={service.image || "/placeholder.svg"} alt={service.title} fill className="object-cover" />
+              </div>
+
+              {/* Decorative elements */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full translate-y-12 -translate-x-12"></div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
   )
 }
-
-type FeatureItem = {
-  title: string;
-  icon: string;
-  description: string
-}
-
-const FeatureItem = ({title, icon, description}: FeatureItem) => {
-  return (
-    <li className="flex w-full flex-1 flex-col items-start">
-      <div className="rounded-full p-4 lg:p-7 bg-green-50">
-        <Image src={icon} alt="map" width={28} height={28}/>
-      </div>
-      <h2 className="bold-20 lg:bold-32 mt-5 capitalize">
-        {title}
-      </h2>
-      <p className="regular-16 mt-5 bg-white/80 text-gray-30 lg:mt-[30px] lg:bg-none">
-        {description}
-      </p>
-    </li>
-  )
-}
-
-export default Features
