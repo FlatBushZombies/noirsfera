@@ -56,14 +56,13 @@ export default function AboutSection() {
             transition={{ delay: 0.6 }}
           >
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Capture.PNG-6u8nKUeMnJRk8Jnl95G7D5v51cpFNO.png"
+              src="/profiles/lackson.jpg"
               alt="Team member"
               width={300}
               height={400}
               className="object-cover w-full h-full"
             />
           </motion.div>
-          <div className="aspect-[3/4] bg-gray-900"></div>
           <div className="aspect-[3/4] bg-gray-900"></div>
         </div>
 

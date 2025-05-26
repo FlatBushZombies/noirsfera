@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 
 import { Roboto } from "next/font/google"
+
 import "./globals.css"
 import Header from "@/components/header"
 import Footer from "@/components/footer"

@@ -11,6 +11,8 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar"
 import { User, Briefcase, FolderOpen, Newspaper, Mail } from "lucide-react"
+import Head from "next/head"
+
 
 interface AppSidebarProps {
   activeSection: string
@@ -27,6 +29,13 @@ export function AppSidebar({ activeSection, setActiveSection }: AppSidebarProps)
   ]
 
   return (
+    <>
+    <Head>
+       <link
+          href="https://fonts.googleapis.com/css2?family=Cascadia+Mono&display=swap"
+          rel="stylesheet"
+        />
+    </Head>
     <Sidebar className="border-r border-gray-800 bg-black text-white">
       <SidebarHeader className="p-6 bg-black">
         {/* Logo */}
@@ -82,5 +91,6 @@ export function AppSidebar({ activeSection, setActiveSection }: AppSidebarProps)
 
       <SidebarRail />
     </Sidebar>
+  </>
   )
 }
