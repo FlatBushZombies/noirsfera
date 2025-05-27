@@ -164,9 +164,6 @@ export function AppSidebar({ activeSection, setActiveSection }: AppSidebarProps)
 
   return (
     <>
-      <Head>
-        <link href="https://fonts.googleapis.com/css2?family=Cascadia+Mono&display=swap" rel="stylesheet" />
-      </Head>
       <Sidebar className="border-r border-gray-800 bg-black text-white">
         <SidebarHeader className="p-6 bg-black">
           {/* Logo */}
@@ -193,7 +190,7 @@ export function AppSidebar({ activeSection, setActiveSection }: AppSidebarProps)
             </div>
             <span
               ref={titleRef}
-              className="font-bold text-xl text-white cursor-pointer select-none"
+              className="font-bold text-xl text-white cursor-pointer select-none py-8"
               style={{ fontFamily: "'Cascadia Mono', monospace" }}
             >
               Noir Sfera
@@ -220,8 +217,8 @@ export function AppSidebar({ activeSection, setActiveSection }: AppSidebarProps)
           </div>
         </SidebarHeader>
 
-        <SidebarContent className="px-6 bg-black">
-          <SidebarMenu className="space-y-2">
+        <SidebarContent className=" bg-black py-16">
+          <SidebarMenu className="">
             {navItems.map((item) => (
               <SidebarMenuItem key={item.id}>
                 <motion.div whileHover={{ x: 5 }} whileTap={{ scale: 0.95 }} className="w-full">

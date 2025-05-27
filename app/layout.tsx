@@ -1,15 +1,13 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
 import "./globals.css"
 import { ResponsiveLayout } from "@/components/responsive-layout"
 
 
-const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Noir Sfera - Portfolio",
-  description: "A modern portfolio website with dark aesthetics",
+  title: "Noir Sfera ",
+  description: "Building Futuristic and Modern Software",
 }
 
 export default function RootLayout({
@@ -25,7 +23,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className={inter.className}>
+      <body >
         
           <ResponsiveLayout>{children}</ResponsiveLayout>
 

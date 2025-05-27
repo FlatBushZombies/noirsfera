@@ -10,36 +10,32 @@ export function Features() {
       id: "web-development",
       title: "Full-Stack Web Development",
       description: "We build scalable web applications using modern technologies and best practices.",
-      bgColor: "bg-sky-400",
-      textColor: "text-blue-900",
-      image: "/mobile-app.png",
+      bgColor: "bg-gray-400",
+      textColor: "text-white",
       link: "#web-development",
     },
     {
       id: "mobile-development",
       title: "Mobile App Development",
       description: "Native and cross-platform mobile solutions that deliver exceptional user experiences.",
-      bgColor: "bg-emerald-400",
-      textColor: "text-emerald-900",
-      image: "/phone-app.png",
+      bgColor: "bg-black",
+      textColor: "text-white",
       link: "#mobile-development",
     },
     {
       id: "cloud-solutions",
       title: "Cloud & DevOps Solutions",
       description: "Scalable cloud infrastructure and automated deployment pipelines for modern applications.",
-      bgColor: "bg-indigo-600",
+      bgColor: "bg-black",
       textColor: "text-white",
-      image: "/images/cloud-solutions.jpg",
       link: "#cloud-solutions",
     },
     {
       id: "ai-ml",
       title: "AI & Machine Learning",
       description: "Intelligent solutions powered by artificial intelligence and machine learning algorithms.",
-      bgColor: "bg-yellow-400",
-      textColor: "text-yellow-900",
-      image: "/images/ai-ml.jpg",
+      bgColor: "bg-gray-400",
+      textColor: "text-white",
       link: "#ai-ml",
     },
   ]
@@ -58,7 +54,7 @@ export function Features() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               whileHover={{ scale: 1.02 }}
-              className={`${service.bgColor} rounded-2xl p-8 cursor-pointer group transition-all duration-300 hover:shadow-xl relative overflow-hidden min-h-[320px] flex flex-col justify-between`}
+              className={`${service.bgColor} rounded-2xl p-6 cursor-pointer group transition-all duration-300 hover:shadow-xl relative overflow-hidden min-h-[320px] flex flex-col justify-between`}
             >
               {/* Content */}
               <div className="relative z-10">
@@ -80,10 +76,7 @@ export function Features() {
                 </div>
               </div>
 
-              {/* Image */}
-              <div className="absolute bottom-4 right-4 w-32 h-24 rounded-lg overflow-hidden opacity-30 group-hover:opacity-50 transition-opacity duration-300">
-                <Image src={service.image || "/placeholder.svg"} alt={service.title} fill className="object-cover" />
-              </div>
+              
 
               {/* Decorative elements */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>

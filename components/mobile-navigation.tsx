@@ -216,13 +216,6 @@ export function MobileNavigation({ activeSection, setActiveSection }: MobileNavi
                 ))}
               </nav>
             </div>
-
-            {/* Footer */}
-            <div className="p-6 border-t border-gray-800">
-              <div className="text-center text-gray-400 text-sm">
-                <p>© 2024 Noir Sfera</p>
-              </div>
-            </div>
           </div>
         </SheetContent>
       </Sheet>
