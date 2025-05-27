@@ -6,6 +6,11 @@ import { gsap } from "gsap"
 import { Menu, X, User, Briefcase, FolderOpen, Newspaper, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import AboutSection from "@/components/sections/about-section"
+import ServicesSection from "@/components/sections/services-section"
+import ProjectsSection from "@/components/sections/projects-section"
+import NewsSection from "@/components/sections/news-section"
+import ContactSection from "@/components/sections/contact-section"
 
 interface MobileNavigationProps {
   activeSection: string
@@ -24,6 +29,34 @@ export function MobileNavigation({ activeSection, setActiveSection }: MobileNavi
     { id: "news", label: "News", icon: Newspaper },
     { id: "contact", label: "Contact", icon: Mail },
   ]
+
+  // Get the section content component
+  const getSectionContent = (sectionId: string) => {
+    switch (sectionId) {
+      case 'about':
+        return <AboutSection />
+      case 'services':
+        return <ServicesSection />
+      case 'projects':
+        return <ProjectsSection />
+      case 'news':
+        return <NewsSection />
+      case 'contact':
+        return <ContactSection />
+      default:
+        return null
+    }
+  }
+
+  const handleSectionClick = (sectionId: string) => {
+    setActiveSection(sectionId)
+    setIsOpen(false)
+    // Scroll to the section
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
 
   useEffect(() => {
     if (isOpen && titleRef.current && rotatingObjectRef.current) {
@@ -199,9 +232,9 @@ export function MobileNavigation({ activeSection, setActiveSection }: MobileNavi
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1, duration: 0.3 }}
                   >
-                    <motion.button
-                      onClick={() => handleNavClick(item.id)}
-                      className={`w-full flex items-center gap-3 py-3 px-4 rounded-md transition-colors ${
+                    <motion.div
+                      onClick={() => handleSectionClick(item.id)}
+                      className={`w-full flex items-center gap-3 py-3 px-4 rounded-md transition-colors cursor-pointer ${
                         activeSection === item.id
                           ? "text-cyan-400 bg-gray-900"
                           : "text-white hover:text-cyan-400 hover:bg-gray-900/50"
@@ -211,7 +244,7 @@ export function MobileNavigation({ activeSection, setActiveSection }: MobileNavi
                     >
                       <item.icon className="h-5 w-5" />
                       <span className="text-lg">{item.label}</span>
-                    </motion.button>
+                    </motion.div>
                   </motion.div>
                 ))}
               </nav>

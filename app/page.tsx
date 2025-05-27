@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { useRouter } from "next/navigation"
 import NewsSection from "@/components/sections/news-section"
 import ServicesSection from "@/components/sections/services-section"
 import ProjectsSection from "@/components/sections/projects-section"
@@ -12,6 +13,7 @@ import { SidebarProvider } from "@/components/ui/sidebar"
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("about")
+  const router = useRouter()
 
   const sections = {
     about: <AboutSection />,
@@ -21,15 +23,21 @@ export default function Home() {
     contact: <ContactSection />,
   }
 
+  // Handle section change
+  const handleSectionChange = (section: string) => {
+    setActiveSection(section)
+    router.push(`#${section}`)
+  }
+
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="flex flex-col md:flex-row gap-8">
-        <div className="md:w-1/4">
-        <SidebarProvider>
-          <AppSidebar activeSection={activeSection} setActiveSection={setActiveSection} />
+      <div className="flex flex-col lg:flex-row gap-8">
+        <div className="lg:w-1/4">
+          <SidebarProvider>
+            <AppSidebar activeSection={activeSection} setActiveSection={setActiveSection} />
           </SidebarProvider>
         </div>
-        <div className="md:w-3/4">
+        <div className="lg:w-3/4 flex-1">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeSection}
@@ -37,9 +45,11 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
-              className="min-h-[70vh]"
+              className="min-h-[70vh] lg:pl-8 w-full"
             >
-              {sections[activeSection as keyof typeof sections]}
+              <div className="w-full">
+                {sections[activeSection as keyof typeof sections]}
+              </div>
             </motion.div>
           </AnimatePresence>
         </div>
