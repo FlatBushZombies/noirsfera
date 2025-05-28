@@ -1,7 +1,6 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Grid } from "../ui/grid"
 import { SocialIcons } from "../ui/social-icons"
 
 interface ProjectsSectionProps {
@@ -12,8 +11,7 @@ export default function ProjectsSection({ id }: ProjectsSectionProps) {
   const projects = Array(8).fill(null)
 
   return (
-    <section id={id} className="space-y-8 justify-center">
-     
+    <section id={id} className="space-y-8 justify-center bg-black">
       <div className="space-y-4">
         <motion.h2
           className="text-2xl font-bold"

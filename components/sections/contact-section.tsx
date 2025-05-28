@@ -10,13 +10,13 @@ interface ContactSectionProps {
 
 export default function ContactSection({ id }: ContactSectionProps) {
   return (
-    <section id={id} className="space-y-8">
+    <section id={id} className="space-y-8 bg-black p-8 flex flex-col">
       <motion.form className="space-y-4" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }}>
           <input
             type="text"
             placeholder="full name"
-            className="w-full bg-transparent border-b border-gray-800 py-2 focus:outline-none focus:border-cyan-400 transition-colors"
+            className="w-full bg-black border-b border-gray-700 py-2 focus:outline-none focus:border-cyan-400 transition-colors text-white placeholder-gray-500"
           />
         </motion.div>
 
@@ -24,7 +24,7 @@ export default function ContactSection({ id }: ContactSectionProps) {
           <input
             type="email"
             placeholder="email"
-            className="w-full bg-transparent border-b border-gray-800 py-2 focus:outline-none focus:border-cyan-400 transition-colors"
+            className="w-full bg-black border-b border-gray-700 py-2 focus:outline-none focus:border-cyan-400 transition-colors text-white placeholder-gray-500"
           />
         </motion.div>
 
@@ -32,7 +32,7 @@ export default function ContactSection({ id }: ContactSectionProps) {
           <input
             type="text"
             placeholder="subject"
-            className="w-full bg-transparent border-b border-gray-800 py-2 focus:outline-none focus:border-cyan-400 transition-colors"
+            className="w-full bg-black border-b border-gray-700 py-2 focus:outline-none focus:border-cyan-400 transition-colors text-white placeholder-gray-500"
           />
         </motion.div>
 
@@ -40,7 +40,7 @@ export default function ContactSection({ id }: ContactSectionProps) {
           <textarea
             placeholder="your message or question"
             rows={4}
-            className="w-full bg-transparent border-b border-gray-800 py-2 focus:outline-none focus:border-cyan-400 transition-colors resize-none"
+            className="w-full bg-black border-b border-gray-700 py-2 focus:outline-none focus:border-cyan-400 transition-colors resize-none text-white placeholder-gray-500"
           ></textarea>
         </motion.div>
 
@@ -50,18 +50,12 @@ export default function ContactSection({ id }: ContactSectionProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
         >
-          <Button className="rounded-full">
-            send message
-          </Button>
+          <Button className="rounded-full bg-cyan-400 text-black hover:bg-cyan-300">send message</Button>
         </motion.div>
       </motion.form>
 
       <div className="space-y-4">
-        <motion.h2
-          className="text-2xl font-bold"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-        >
+        <motion.h2 className="text-2xl font-bold" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
           Contact
         </motion.h2>
 

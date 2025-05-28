@@ -1,7 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import "./globals.css"
-import { ResponsiveLayout } from "@/components/responsive-layout"
+
 
 
 
@@ -25,7 +25,7 @@ export default function RootLayout({
       </head>
       <body >
         
-          <ResponsiveLayout>{children}</ResponsiveLayout>
+          {children}
 
       </body>
     </html>

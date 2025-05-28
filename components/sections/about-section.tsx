@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion"
 import Image from "next/image"
-import { Grid } from "../ui/grid"
 import { SocialIcons } from "../ui/social-icons"
 
 interface AboutSectionProps {
@@ -11,11 +10,10 @@ interface AboutSectionProps {
 
 export default function AboutSection({ id }: AboutSectionProps) {
   return (
-    <section id={id} className="space-y-4">
- 
+    <section id={id} className="space-y-4 bg-black">
       <div className="space-y-4">
         <motion.h2
-          className="text-2xl font-bold"
+          className="text-2xl font-bold text-white"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
@@ -54,7 +52,7 @@ export default function AboutSection({ id }: AboutSectionProps) {
 
         <div className="grid grid-cols-3 gap-4 mt-8">
           <motion.div
-            className="aspect-[3/4] bg-gray-900 overflow-hidden rounded-md"
+            className="aspect-[3/4] bg-black border border-gray-800 overflow-hidden rounded-md"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.6 }}
@@ -67,7 +65,7 @@ export default function AboutSection({ id }: AboutSectionProps) {
               className="object-cover w-full h-full"
             />
           </motion.div>
-          <div className="aspect-[3/4] bg-gray-900"></div>
+          <div className="aspect-[3/4] bg-black border border-gray-800 rounded-md"></div>
         </div>
 
         <motion.div className="mt-6" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }}>

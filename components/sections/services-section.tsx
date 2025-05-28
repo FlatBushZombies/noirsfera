@@ -1,7 +1,6 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Grid } from "../ui/grid"
 import { Info } from "lucide-react"
 import { Features } from "../Features"
 
@@ -13,7 +12,7 @@ export default function ServicesSection({ id }: ServicesSectionProps) {
   const services = Array(6).fill(null)
 
   return (
-    <section id={id} className="space-y-8">
+    <section id={id} className="space-y-8 bg-black">
       <div className="space-y-4">
         <motion.div
           className="flex items-center justify-between"
@@ -31,7 +30,7 @@ export default function ServicesSection({ id }: ServicesSectionProps) {
           <motion.div
             whileHover={{ rotate: 180 }}
             transition={{ duration: 0.3 }}
-            className="bg-gray-800 rounded-full p-2"
+            className="bg-black border border-gray-800 rounded-full p-2"
           >
             <Info className="h-5 w-5 text-cyan-400" />
           </motion.div>

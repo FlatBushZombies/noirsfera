@@ -1,7 +1,6 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Grid } from "../ui/grid"
 import { SocialIcons } from "../ui/social-icons"
 import { Button } from "@/components/ui/button"
 
@@ -11,9 +10,8 @@ interface NewsSectionProps {
 
 export default function NewsSection({ id }: NewsSectionProps) {
   return (
-    <section id={id} className="space-y-8">
-      <div className="border border-blue-500 p-4 aspect-video w-full"></div>
-
+    <section id={id} className="space-y-8 bg-black">
+      <div className="border border-blue-500 p-4 aspect-video w-full bg-black"></div>
 
       <div className="space-y-4">
         <motion.h2
@@ -41,7 +39,7 @@ export default function NewsSection({ id }: NewsSectionProps) {
           transition={{ delay: 0.3 }}
         >
           <p className="text-xs text-gray-400">Subscribe to get news when new projects release. Enter your email:</p>
-          <Button>Subscribe</Button>
+          <Button className="bg-cyan-400 text-black hover:bg-cyan-300">Subscribe</Button>
         </motion.div>
 
         <SocialIcons />
