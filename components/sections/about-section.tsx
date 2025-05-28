@@ -5,9 +5,13 @@ import Image from "next/image"
 import { Grid } from "../ui/grid"
 import { SocialIcons } from "../ui/social-icons"
 
-export default function AboutSection() {
+interface AboutSectionProps {
+  id?: string
+}
+
+export default function AboutSection({ id }: AboutSectionProps) {
   return (
-    <section className="space-y-4">
+    <section id={id} className="space-y-4">
  
       <div className="space-y-4">
         <motion.h2
@@ -16,7 +20,7 @@ export default function AboutSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          about:
+          About
         </motion.h2>
         <motion.h3
           className="text-xl text-gray-300"

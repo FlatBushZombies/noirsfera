@@ -5,18 +5,29 @@ import { Grid } from "../ui/grid"
 import { Info } from "lucide-react"
 import { Features } from "../Features"
 
-export default function ServicesSection() {
+interface ServicesSectionProps {
+  id?: string
+}
+
+export default function ServicesSection({ id }: ServicesSectionProps) {
   const services = Array(6).fill(null)
 
   return (
-    <section className="space-y-8">
+    <section id={id} className="space-y-8">
       <div className="space-y-4">
         <motion.div
           className="flex items-center justify-between"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <h2 className="text-2xl font-bold">services:</h2>
+          <motion.h2
+            className="text-2xl font-bold"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            services:
+          </motion.h2>
           <motion.div
             whileHover={{ rotate: 180 }}
             transition={{ duration: 0.3 }}

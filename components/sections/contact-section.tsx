@@ -4,9 +4,13 @@ import { motion } from "framer-motion"
 import { SocialIcons } from "../ui/social-icons"
 import { Button } from "@/components/ui/button"
 
-export default function ContactSection() {
+interface ContactSectionProps {
+  id?: string
+}
+
+export default function ContactSection({ id }: ContactSectionProps) {
   return (
-    <section className="space-y-8">
+    <section id={id} className="space-y-8">
       <motion.form className="space-y-4" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }}>
           <input
@@ -57,15 +61,16 @@ export default function ContactSection() {
           className="text-2xl font-bold"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
+          transition={{ delay: 0.2 }}
         >
-          contact:
+          Contact
         </motion.h2>
 
         <motion.p
           className="text-gray-400 text-sm"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
           transition={{ delay: 0.7 }}
         >
           Let's get started on your next project.

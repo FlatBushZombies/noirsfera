@@ -4,11 +4,15 @@ import { motion } from "framer-motion"
 import { Grid } from "../ui/grid"
 import { SocialIcons } from "../ui/social-icons"
 
-export default function ProjectsSection() {
+interface ProjectsSectionProps {
+  id?: string
+}
+
+export default function ProjectsSection({ id }: ProjectsSectionProps) {
   const projects = Array(8).fill(null)
 
   return (
-    <section className="space-y-8 justify-center">
+    <section id={id} className="space-y-8 justify-center">
      
       <div className="space-y-4">
         <motion.h2 className="text-2xl font-bold" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>

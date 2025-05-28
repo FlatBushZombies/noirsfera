@@ -15,21 +15,23 @@ import {
 import { User, Briefcase, FolderOpen, Newspaper, Mail } from "lucide-react"
 import Head from "next/head"
 
+type Section = "about" | "services" | "projects" | "news" | "contact"
+
 interface AppSidebarProps {
-  activeSection: string
-  setActiveSection: (section: string) => void
+  activeSection: Section
+  onSectionChange: (section: Section) => void
 }
 
-export function AppSidebar({ activeSection, setActiveSection }: AppSidebarProps) {
+export function AppSidebar({ activeSection, onSectionChange }: AppSidebarProps) {
   const titleRef = useRef<HTMLSpanElement>(null)
   const rotatingObjectRef = useRef<HTMLDivElement>(null)
 
   const navItems = [
-    { id: "about", label: "About", icon: User },
-    { id: "services", label: "Services", icon: Briefcase },
-    { id: "projects", label: "Projects", icon: FolderOpen },
-    { id: "news", label: "News", icon: Newspaper },
-    { id: "contact", label: "Contact", icon: Mail },
+    { id: "about" as Section, label: "About", icon: User },
+    { id: "services" as Section, label: "Services", icon: Briefcase },
+    { id: "projects" as Section, label: "Projects", icon: FolderOpen },
+    { id: "news" as Section, label: "News", icon: Newspaper },
+    { id: "contact" as Section, label: "Contact", icon: Mail },
   ]
 
   useEffect(() => {
@@ -223,7 +225,7 @@ export function AppSidebar({ activeSection, setActiveSection }: AppSidebarProps)
               <SidebarMenuItem key={item.id}>
                 <motion.div whileHover={{ x: 5 }} whileTap={{ scale: 0.95 }} className="w-full">
                   <SidebarMenuButton
-                    onClick={() => setActiveSection(item.id)}
+                    onClick={() => onSectionChange(item.id)}
                     className={`w-full justify-start py-2 px-4 rounded-md transition-colors border-0 ${
                       activeSection === item.id
                         ? "text-cyan-400 bg-gray-900 hover:bg-gray-900 hover:text-cyan-400"

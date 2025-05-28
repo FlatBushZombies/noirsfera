@@ -5,15 +5,28 @@ import { Grid } from "../ui/grid"
 import { SocialIcons } from "../ui/social-icons"
 import { Button } from "@/components/ui/button"
 
-export default function NewsSection() {
+interface NewsSectionProps {
+  id?: string
+}
+
+export default function NewsSection({ id }: NewsSectionProps) {
   return (
-    <section className="space-y-8">
+    <section id={id} className="space-y-8">
       <div className="border border-blue-500 p-4 aspect-video w-full"></div>
 
 
       <div className="space-y-4">
         <motion.h2 className="text-2xl font-bold" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
           blog:
+        </motion.h2>
+
+        <motion.h2
+          className="text-2xl font-bold"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+        >
+          News
         </motion.h2>
 
         <motion.p

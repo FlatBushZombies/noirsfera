@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { MobileNavigation } from "@/components/mobile-navigation"
 import { AppSidebar } from "@/components/app-sidebar"
 import { SidebarProvider } from "@/components/ui/sidebar"
+import { ResponsiveLayout } from "@/components/responsive-layout"
 import AboutSection from "@/components/sections/about-section"
 import ServicesSection from "@/components/sections/services-section"
 import ProjectsSection from "@/components/sections/projects-section"
@@ -18,48 +19,57 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState<"about" | "services" | "projects" | "news" | "contact">("about")
 
   const sections = {
-    about: <AboutSection />,
-    services: <ServicesSection />,
-    projects: <ProjectsSection />,
-    news: <NewsSection />,
-    contact: <ContactSection />,
+    about: <AboutSection id="about" />,
+    services: <ServicesSection id="services" />,
+    projects: <ProjectsSection id="projects" />,
+    news: <NewsSection id="news" />,
+    contact: <ContactSection id="contact" />,
   } as const
 
   const handleSectionChange = (section: "about" | "services" | "projects" | "news" | "contact") => {
     setActiveSection(section)
-    router.push(`#${section}`)
-    // Scroll to top on mobile
-    if (window.innerWidth < 1024) {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
+    const element = document.getElementById(section)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
     }
+    // Update URL hash
+    router.push(`#${section}`)
   }
 
   useEffect(() => {
     const hash = pathname.split("#")?.[1]
     if (hash && Object.keys(sections).includes(hash)) {
       setActiveSection(hash as "about" | "services" | "projects" | "news" | "contact")
+      const element = document.getElementById(hash)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
     }
   }, [pathname])
 
   return (
-    <main className="min-h-screen bg-black text-white">
-      <div className="flex flex-col lg:flex-row">
-        <MobileNavigation activeSection={activeSection} onSectionChange={handleSectionChange} className="lg:hidden" />
-        <div className="flex-1">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeSection}
+    <ResponsiveLayout>
+      <div className="flex flex-col">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeSection}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
               className="min-h-screen"
             >
-              {sections[activeSection]}
+              <div className="space-y-16">
+                {Object.entries(sections).map(([section, Component]) => (
+                  <div key={section} id={section} className="space-y-8">
+                    <h2 className="text-4xl font-bold text-cyan-400">{section.charAt(0).toUpperCase() + section.slice(1)}</h2>
+                    {Component}
+                  </div>
+                ))}
+              </div>
             </motion.div>
-          </AnimatePresence>
-        </div>
+        </AnimatePresence>
       </div>
-    </main>
+    </ResponsiveLayout>
   )
 }

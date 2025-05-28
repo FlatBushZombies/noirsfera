@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X, User, Briefcase, FolderOpen, Newspaper, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { SidebarMenuButton } from "@/components/ui/sidebar"
 
 interface MobileNavigationProps {
   activeSection: "about" | "services" | "projects" | "news" | "contact"
@@ -71,7 +72,7 @@ export function MobileNavigation({ activeSection, onSectionChange }: MobileNavig
       <SheetContent side="left" className="w-80 bg-black border-r border-gray-800 text-white">
         <div className="flex flex-col h-full">
           <div className="flex-1">
-            <nav className="space-y-2 mb-8 py-8">
+            <nav className="space-y-2 mb-8">
               {navItems.map((item, index) => (
                 <motion.div
                   key={item.id}
@@ -79,19 +80,20 @@ export function MobileNavigation({ activeSection, onSectionChange }: MobileNavig
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1, duration: 0.3 }}
                 >
-                  <motion.div
+                  <SidebarMenuButton
                     onClick={() => handleSectionClick(item.id)}
-                    className={`w-full flex items-center gap-6 py-3 px-4 rounded-md transition-colors cursor-pointer ${
+                    className={`w-full justify-start py-2 px-4 rounded-md transition-colors border-0 ${
                       activeSection === item.id
-                        ? "text-cyan-400 bg-gray-900"
-                        : "text-white hover:text-cyan-400 hover:bg-gray-900/50"
+                        ? "text-cyan-400 bg-gray-900 hover:bg-gray-900 hover:text-cyan-400"
+                        : "text-white hover:text-white hover:bg-gray-900/50 bg-transparent"
                     }`}
-                    whileHover={{ x: 5 }}
-                    whileTap={{ scale: 0.95 }}
+                    asChild
                   >
-                    <item.icon className="h-5 w-5 text-white" />
-                    <span className="text-white text-lg">{item.label}</span>
-                  </motion.div>
+                    <button className="flex items-center gap-3">
+                      <item.icon className="h-4 w-4" />
+                      <span>{item.label}</span>
+                    </button>
+                  </SidebarMenuButton>
                 </motion.div>
               ))}
             </nav>
