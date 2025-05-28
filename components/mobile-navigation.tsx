@@ -80,20 +80,17 @@ export function MobileNavigation({ activeSection, onSectionChange }: MobileNavig
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1, duration: 0.3 }}
                 >
-                  <SidebarMenuButton
+                  <button
                     onClick={() => handleSectionClick(item.id)}
-                    className={`w-full justify-start py-2 px-4 rounded-md transition-colors border-0 ${
+                    className={`w-full flex items-center justify-start py-2 px-4 rounded-md transition-colors border-0 ${
                       activeSection === item.id
                         ? "text-cyan-400 bg-gray-900 hover:bg-gray-900 hover:text-cyan-400"
                         : "text-white hover:text-white hover:bg-gray-900/50 bg-transparent"
                     }`}
-                    asChild
                   >
-                    <button className="flex items-center gap-3">
-                      <item.icon className="h-4 w-4" />
-                      <span>{item.label}</span>
-                    </button>
-                  </SidebarMenuButton>
+                    <item.icon className="h-4 w-4" />
+                    <span>{item.label}</span>
+                  </button>
                 </motion.div>
               ))}
             </nav>
