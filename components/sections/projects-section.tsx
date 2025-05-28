@@ -8,7 +8,7 @@ export default function ProjectsSection() {
   const projects = Array(8).fill(null)
 
   return (
-    <section className="space-y-8">
+    <section className="space-y-8 justify-center">
      
       <div className="space-y-4">
         <motion.h2 className="text-2xl font-bold" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>

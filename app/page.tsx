@@ -1,19 +1,21 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useRouter, usePathname } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
-import { useRouter } from "next/navigation"
-import NewsSection from "@/components/sections/news-section"
-import ServicesSection from "@/components/sections/services-section"
-import ProjectsSection from "@/components/sections/projects-section"
-import ContactSection from "@/components/sections/contact-section"
-import AboutSection from "@/components/sections/about-section"
+import { MobileNavigation } from "@/components/mobile-navigation"
 import { AppSidebar } from "@/components/app-sidebar"
 import { SidebarProvider } from "@/components/ui/sidebar"
+import AboutSection from "@/components/sections/about-section"
+import ServicesSection from "@/components/sections/services-section"
+import ProjectsSection from "@/components/sections/projects-section"
+import NewsSection from "@/components/sections/news-section"
+import ContactSection from "@/components/sections/contact-section"
 
 export default function Home() {
-  const [activeSection, setActiveSection] = useState("about")
   const router = useRouter()
+  const pathname = usePathname()
+  const [activeSection, setActiveSection] = useState<"about" | "services" | "projects" | "news" | "contact">("about")
 
   const sections = {
     about: <AboutSection />,
@@ -21,39 +23,43 @@ export default function Home() {
     projects: <ProjectsSection />,
     news: <NewsSection />,
     contact: <ContactSection />,
-  }
+  } as const
 
-  // Handle section change
-  const handleSectionChange = (section: string) => {
+  const handleSectionChange = (section: "about" | "services" | "projects" | "news" | "contact") => {
     setActiveSection(section)
     router.push(`#${section}`)
+    // Scroll to top on mobile
+    if (window.innerWidth < 1024) {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
   }
 
+  useEffect(() => {
+    const hash = pathname.split("#")?.[1]
+    if (hash && Object.keys(sections).includes(hash)) {
+      setActiveSection(hash as "about" | "services" | "projects" | "news" | "contact")
+    }
+  }, [pathname])
+
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="flex flex-col lg:flex-row gap-8">
-        <div className="lg:w-1/4">
-          <SidebarProvider>
-            <AppSidebar activeSection={activeSection} setActiveSection={setActiveSection} />
-          </SidebarProvider>
-        </div>
-        <div className="lg:w-3/4 flex-1">
+    <main className="min-h-screen bg-black text-white">
+      <div className="flex flex-col lg:flex-row">
+        <MobileNavigation activeSection={activeSection} onSectionChange={handleSectionChange} className="lg:hidden" />
+        <div className="flex-1">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeSection}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-              className="min-h-[70vh] lg:pl-8 w-full"
+              transition={{ duration: 0.3 }}
+              className="min-h-screen"
             >
-              <div className="w-full">
-                {sections[activeSection as keyof typeof sections]}
-              </div>
+              {sections[activeSection]}
             </motion.div>
           </AnimatePresence>
         </div>
       </div>
-    </div>
+    </main>
   )
 }

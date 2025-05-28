@@ -217,8 +217,8 @@ export function AppSidebar({ activeSection, setActiveSection }: AppSidebarProps)
           </div>
         </SidebarHeader>
 
-        <SidebarContent className=" bg-black ">
-          <SidebarMenu className="flex-1 overflow-y-auto">
+        <SidebarContent className=" bg-black py-8">
+          <SidebarMenu className="flex-1 ">
             {navItems.map((item) => (
               <SidebarMenuItem key={item.id}>
                 <motion.div whileHover={{ x: 5 }} whileTap={{ scale: 0.95 }} className="w-full">

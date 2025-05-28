@@ -7,7 +7,7 @@ import { SocialIcons } from "../ui/social-icons"
 
 export default function AboutSection() {
   return (
-    <section className="space-y-8">
+    <section className="space-y-4">
  
       <div className="space-y-4">
         <motion.h2

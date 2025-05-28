@@ -28,7 +28,7 @@ export function ResponsiveLayout({ children }: ResponsiveLayoutProps) {
       <div className="hidden lg:block">
         <SidebarProvider>
           <div className="flex min-h-screen">
-            <AppSidebar activeSection={activeSection} setActiveSection={setActiveSection} />
+            
             <main className="flex-1 bg-black text-white overflow-auto p-4">
               {children}
             </main>
