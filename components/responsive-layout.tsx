@@ -12,13 +12,14 @@ interface ResponsiveLayoutProps {
 }
 
 export function ResponsiveLayout({ children }: ResponsiveLayoutProps) {
-  const [activeSection, setActiveSection] = useState("about")
+  type Section = "about" | "services" | "projects" | "news" | "contact"
+  const [activeSection, setActiveSection] = useState<Section>("about")
 
   // Get section from URL hash
   useEffect(() => {
     const hash = window.location.hash.slice(1)
     if (hash && ['about', 'services', 'projects', 'news', 'contact'].includes(hash)) {
-      setActiveSection(hash)
+      setActiveSection(hash as Section)
     }
   }, [])
 
