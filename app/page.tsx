@@ -40,26 +40,28 @@ export default function Home() {
   }, [pathname])
 
   return (
-    <div className="flex flex-col">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={activeSection}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.3 }}
-          className="min-h-screen"
-        >
-          <div className="flex-1 overflow-y-auto">
-            <div className="space-y-8">
-              <h2 className="text-4xl font-bold text-cyan-400">
-                {activeSection.charAt(0).toUpperCase() + activeSection.slice(1)}
-              </h2>
-              {sections[activeSection as keyof typeof sections]}
+    <SidebarProvider>
+      <ResponsiveLayout>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeSection}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="min-h-screen"
+          >
+            <div className="flex-1 overflow-y-auto">
+              <div className="space-y-8">
+                <h2 className="text-4xl font-bold text-cyan-400">
+                  {activeSection.charAt(0).toUpperCase() + activeSection.slice(1)}
+                </h2>
+                {sections[activeSection as keyof typeof sections]}
+              </div>
             </div>
-          </div>
-        </motion.div>
-      </AnimatePresence>
-    </div>
+          </motion.div>
+        </AnimatePresence>
+      </ResponsiveLayout>
+    </SidebarProvider>
   )
 }
