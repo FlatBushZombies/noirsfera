@@ -38,7 +38,7 @@ export function ResponsiveLayout({ children }: ResponsiveLayoutProps) {
 
       {/* Mobile Layout */}
       <div className="lg:hidden">
-        <MobileNavigation activeSection={activeSection} setActiveSection={setActiveSection} />
+        <MobileNavigation activeSection={activeSection} onSectionChange={setActiveSection} />
         <main className="bg-black text-white min-h-screen p-4">
           {children}
         </main>
