@@ -10,7 +10,8 @@ interface ContactSectionProps {
 
 export default function ContactSection({ id }: ContactSectionProps) {
   return (
-    <section id={id} className="space-y-8 bg-black p-8 flex flex-col">
+    <div className="min-h-screen bg-black">
+    <section id={id} className="space-y-6 md:space-y-8 p-4 md:p-8">
       <motion.form className="space-y-4" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }}>
           <input
@@ -77,5 +78,6 @@ export default function ContactSection({ id }: ContactSectionProps) {
         <SocialIcons />
       </div>
     </section>
+  </div>
   )
 }

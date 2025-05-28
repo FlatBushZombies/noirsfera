@@ -12,7 +12,8 @@ export default function ServicesSection({ id }: ServicesSectionProps) {
   const services = Array(6).fill(null)
 
   return (
-    <section id={id} className="space-y-8 bg-black">
+    <div className="min-h-screen bg-black">
+    <section id={id} className="space-y-6 md:space-y-8 p-4 md:p-8">
       <div className="space-y-4">
         <motion.div
           className="flex items-center justify-between"
@@ -20,7 +21,7 @@ export default function ServicesSection({ id }: ServicesSectionProps) {
           animate={{ opacity: 1, y: 0 }}
         >
           <motion.h2
-            className="text-2xl font-bold"
+            className="text-2xl font-bold text-white"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -53,5 +54,6 @@ export default function ServicesSection({ id }: ServicesSectionProps) {
         </motion.div>
       </div>
     </section>
+    </div>
   )
 }

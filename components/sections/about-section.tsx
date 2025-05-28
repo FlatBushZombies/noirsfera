@@ -10,7 +10,8 @@ interface AboutSectionProps {
 
 export default function AboutSection({ id }: AboutSectionProps) {
   return (
-    <section id={id} className="space-y-4 bg-black">
+    <div className="min-h-screen bg-black">
+    <section id={id} className="space-y-4 p-4 md:p-8">
       <div className="space-y-4">
         <motion.h2
           className="text-2xl font-bold text-white"
@@ -76,5 +77,6 @@ export default function AboutSection({ id }: AboutSectionProps) {
         </motion.div>
       </div>
     </section>
+  </div>
   )
 }
