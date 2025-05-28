@@ -26,7 +26,7 @@ export default function ServicesSection({ id }: ServicesSectionProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            services:
+            Services
           </motion.h2>
           <motion.div
             whileHover={{ rotate: 180 }}

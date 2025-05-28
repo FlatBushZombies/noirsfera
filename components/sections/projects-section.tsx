@@ -15,8 +15,13 @@ export default function ProjectsSection({ id }: ProjectsSectionProps) {
     <section id={id} className="space-y-8 justify-center">
      
       <div className="space-y-4">
-        <motion.h2 className="text-2xl font-bold" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-          projects:
+        <motion.h2
+          className="text-2xl font-bold"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+        >
+          Projects
         </motion.h2>
 
         <motion.p

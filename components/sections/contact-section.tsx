@@ -61,7 +61,6 @@ export default function ContactSection({ id }: ContactSectionProps) {
           className="text-2xl font-bold"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
         >
           Contact
         </motion.h2>
@@ -70,7 +69,6 @@ export default function ContactSection({ id }: ContactSectionProps) {
           className="text-gray-400 text-sm"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
           transition={{ delay: 0.7 }}
         >
           Let's get started on your next project.

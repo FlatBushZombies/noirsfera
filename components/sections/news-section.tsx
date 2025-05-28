@@ -16,10 +16,6 @@ export default function NewsSection({ id }: NewsSectionProps) {
 
 
       <div className="space-y-4">
-        <motion.h2 className="text-2xl font-bold" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-          blog:
-        </motion.h2>
-
         <motion.h2
           className="text-2xl font-bold"
           initial={{ opacity: 0, y: 20 }}

@@ -16,7 +16,6 @@ import ContactSection from "@/components/sections/contact-section"
 export default function Home() {
   const router = useRouter()
   const pathname = usePathname()
-  const [activeSection, setActiveSection] = useState<"about" | "services" | "projects" | "news" | "contact">("about")
 
   const sections = {
     about: <AboutSection id="about" />,
@@ -27,49 +26,37 @@ export default function Home() {
   } as const
 
   const handleSectionChange = (section: "about" | "services" | "projects" | "news" | "contact") => {
-    setActiveSection(section)
-    const element = document.getElementById(section)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-    // Update URL hash
     router.push(`#${section}`)
   }
 
   useEffect(() => {
     const hash = pathname.split("#")?.[1]
     if (hash && Object.keys(sections).includes(hash)) {
-      setActiveSection(hash as "about" | "services" | "projects" | "news" | "contact")
-      const element = document.getElementById(hash)
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
-      }
+      // The active section will be managed by ResponsiveLayout
     }
   }, [pathname])
 
   return (
-    <ResponsiveLayout>
-      <div className="flex flex-col">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeSection}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
-              className="min-h-screen"
-            >
-              <div className="space-y-16">
-                {Object.entries(sections).map(([section, Component]) => (
-                  <div key={section} id={section} className="space-y-8">
-                    <h2 className="text-4xl font-bold text-cyan-400">{section.charAt(0).toUpperCase() + section.slice(1)}</h2>
-                    {Component}
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-        </AnimatePresence>
-      </div>
-    </ResponsiveLayout>
+    <div className="flex flex-col">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={window.location.hash.slice(1)}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.3 }}
+          className="min-h-screen"
+        >
+          <div className="flex-1 overflow-y-auto">
+            <div className="space-y-8">
+              <h2 className="text-4xl font-bold text-cyan-400">
+                {window.location.hash.slice(1).charAt(0).toUpperCase() + window.location.hash.slice(2)}
+              </h2>
+              {sections[window.location.hash.slice(1) as keyof typeof sections]}
+            </div>
+          </div>
+        </motion.div>
+      </AnimatePresence>
+    </div>
   )
 }
