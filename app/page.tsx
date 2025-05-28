@@ -31,7 +31,7 @@ export default function Home() {
 
   return (
       <SidebarProvider>
-      <div className="flex min-h-screen bg-black">
+      <div className="flex min-h-screen bg-black w-full">
         <AppSidebar currentPage={currentPage} onPageChange={setCurrentPage} />
         <SidebarInset className="flex-1 md:ml-4">
           <div className="md:hidden">
