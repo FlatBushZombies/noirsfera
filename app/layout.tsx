@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import "./globals.css"
+import Footer from "@/components/footer"
 
 
 
@@ -28,6 +29,7 @@ export default function RootLayout({
           {children}
 
       </body>
+      <Footer />
     </html>
   )
 }
