@@ -1,58 +1,273 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { SocialIcons } from "../ui/social-icons"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Card, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Search, Calendar, User, Clock, ArrowRight } from "lucide-react"
 
-interface NewsSectionProps {
-  id?: string
-}
+export default function NewsSection() {
+  const [searchQuery, setSearchQuery] = useState("")
 
-export default function NewsSection({ id }: NewsSectionProps) {
+  const categories = [
+    "All",
+    "Web Development",
+    "AI & Machine Learning",
+    "Design",
+    "Mobile",
+    "DevOps",
+    "Security",
+    "Performance",
+  ]
+
+  const featuredArticles = [
+    {
+      id: 1,
+      title: "Building the Future: How AI is Revolutionizing Modern Web Development",
+      excerpt:
+        "Exploring the cutting-edge intersection of artificial intelligence and web development, and how it's reshaping the digital landscape.",
+      author: "Brian Makanjira",
+      date: "Dec 15, 2024",
+      readTime: "8 min read",
+      category: "AI & Machine Learning",
+      image: "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=800",
+      featured: true,
+    },
+    {
+      id: 2,
+      title: "Next.js 15 introduces revolutionary server components that change everything",
+      excerpt:
+        "A deep dive into the new server components architecture and how it improves performance and developer experience.",
+      author: "Sarah Chen",
+      date: "Dec 14, 2024",
+      readTime: "6 min read",
+      category: "Web Development",
+      image: "https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=600",
+    },
+    {
+      id: 3,
+      title: "The rise of edge computing: Why your apps need to get closer to users",
+      excerpt: "Understanding edge computing and its impact on application performance and user experience.",
+      author: "Marcus Rodriguez",
+      date: "Dec 13, 2024",
+      readTime: "7 min read",
+      category: "Performance",
+      image: "https://images.pexels.com/photos/325229/pexels-photo-325229.jpeg?auto=compress&cs=tinysrgb&w=600",
+    },
+  ]
+
+  const allArticles = [
+    ...featuredArticles,
+    {
+      id: 4,
+      title: "TypeScript 5.0 brings new features that will boost your productivity",
+      excerpt: "Exploring the latest TypeScript features and how they improve developer productivity and code quality.",
+      author: "Elena Vasquez",
+      date: "Dec 12, 2024",
+      readTime: "5 min read",
+      category: "Web Development",
+      image: "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=600",
+    },
+    {
+      id: 5,
+      title: "Serverless architecture: Building scalable applications without managing servers",
+      excerpt: "A comprehensive guide to serverless architecture and its benefits for modern application development.",
+      author: "David Park",
+      date: "Dec 11, 2024",
+      readTime: "9 min read",
+      category: "DevOps",
+      image: "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=600",
+    },
+    {
+      id: 6,
+      title: "Web3 and blockchain integration: The future of decentralized applications",
+      excerpt: "Understanding Web3 technologies and how to integrate blockchain features into modern web applications.",
+      author: "Alex Thompson",
+      date: "Dec 10, 2024",
+      readTime: "10 min read",
+      category: "Web Development",
+      image: "https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=600",
+    },
+    {
+      id: 7,
+      title: "Mastering React Server Components: A Complete Guide",
+      excerpt:
+        "Learn how to leverage React Server Components for better performance and user experience in your applications.",
+      author: "James Wilson",
+      date: "Dec 9, 2024",
+      readTime: "12 min read",
+      category: "Web Development",
+      image: "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=600",
+    },
+    {
+      id: 8,
+      title: "Database Optimization Techniques for High-Traffic Applications",
+      excerpt:
+        "Strategies to optimize your database performance when dealing with millions of users and high traffic loads.",
+      author: "Maria Garcia",
+      date: "Dec 8, 2024",
+      readTime: "8 min read",
+      category: "Performance",
+      image: "https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=600",
+    },
+  ]
+
   return (
-    <div className="bg-black min-h-screen">
-      <section id={id} className="space-y-6 md:space-y-8 p-4 md:p-8">
-        <div className="border border-blue-500 p-4 aspect-video w-full bg-black rounded"></div>
+    <div className="min-h-screen bg-black text-white py-20 px-4">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            <span className="text-cyan-400">NoirSfera</span> Blog
+          </h1>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+            Insights, tutorials, and thoughts on modern web development, AI, and technology trends
+          </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-6 md:mb-8">
-          <div className="aspect-video bg-gray-800 rounded"></div>
-          <div className="aspect-video bg-gray-800 rounded"></div>
+          {/* Search Bar */}
+          <div className="max-w-md mx-auto relative">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+            <Input
+              type="text"
+              placeholder="Search articles..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="pl-10 bg-gray-900 border-gray-700 text-white focus:border-cyan-500"
+            />
+          </div>
         </div>
 
-        <div className="space-y-4">
-          <motion.h2
-            className="text-xl md:text-2xl font-bold text-white"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-          >
-            News
-          </motion.h2>
+        {/* Categories */}
+        <div className="flex flex-wrap justify-center gap-3 mb-16">
+          {categories.map((category) => (
+            <Button
+              key={category}
+              variant="outline"
+              className="border-gray-700 text-gray-300 hover:border-cyan-500 hover:text-cyan-400 hover:bg-cyan-500/10"
+            >
+              {category}
+            </Button>
+          ))}
+        </div>
 
-          <motion.p
-            className="text-gray-400 text-sm md:text-base"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-          >
-            This blog is about our new releases and projects on the way.
-          </motion.p>
+        {/* Featured Article */}
+        <div className="mb-16">
+          <h2 className="text-3xl font-bold text-white mb-8">Featured Article</h2>
+          <Card className="bg-gray-900 border-gray-800 overflow-hidden group cursor-pointer">
+            <CardContent className="p-0">
+              <div className="grid grid-cols-1 lg:grid-cols-2">
+                <div className="relative overflow-hidden">
+                  <img
+                    src={featuredArticles[0].image || "/placeholder.svg"}
+                    alt={featuredArticles[0].title}
+                    className="w-full h-64 lg:h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute top-4 left-4">
+                    <Badge className="bg-cyan-500 text-black font-semibold">Featured</Badge>
+                  </div>
+                </div>
 
-          <motion.div
-            className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mt-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-          >
-            <p className="text-xs md:text-sm text-gray-400">
-              Subscribe to get news when new projects release. Enter your email:
+                <div className="p-8 flex flex-col justify-center">
+                  <Badge className="w-fit mb-4 bg-cyan-500/20 text-cyan-400 border border-cyan-500/30">
+                    {featuredArticles[0].category}
+                  </Badge>
+
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 leading-tight group-hover:text-cyan-400 transition-colors">
+                    {featuredArticles[0].title}
+                  </h3>
+
+                  <p className="text-gray-300 mb-6 leading-relaxed">{featuredArticles[0].excerpt}</p>
+
+                  <div className="flex items-center gap-6 text-sm text-gray-400 mb-6">
+                    <div className="flex items-center gap-2">
+                      <User className="h-4 w-4" />
+                      <span className="text-cyan-400">{featuredArticles[0].author}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Calendar className="h-4 w-4" />
+                      <span>{featuredArticles[0].date}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Clock className="h-4 w-4" />
+                      <span>{featuredArticles[0].readTime}</span>
+                    </div>
+                  </div>
+
+                  <Button className="w-fit bg-cyan-500 hover:bg-cyan-600 text-black font-semibold">
+                    Read Article
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Latest Articles Grid */}
+        <div className="mb-16">
+          <h2 className="text-3xl font-bold text-white mb-8">Latest Articles</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {allArticles.slice(1).map((article) => (
+              <Card
+                key={article.id}
+                className="bg-gray-900 border-gray-800 hover:border-cyan-500 transition-all duration-300 group cursor-pointer"
+              >
+                <CardContent className="p-0">
+                  <div className="relative overflow-hidden">
+                    <img
+                      src={article.image || "/placeholder.svg"}
+                      alt={article.title}
+                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute top-4 left-4">
+                      <Badge className="bg-cyan-500/20 text-cyan-400 border border-cyan-500/30">
+                        {article.category}
+                      </Badge>
+                    </div>
+                  </div>
+
+                  <div className="p-6">
+                    <h3 className="text-lg font-semibold text-white mb-3 leading-tight group-hover:text-cyan-400 transition-colors">
+                      {article.title}
+                    </h3>
+                    <p className="text-gray-400 text-sm mb-4 leading-relaxed">{article.excerpt}</p>
+
+                    <div className="flex items-center justify-between text-xs text-gray-500">
+                      <div className="flex items-center gap-4">
+                        <span className="text-cyan-400 font-medium">{article.author}</span>
+                        <span>{article.date}</span>
+                      </div>
+                      <span>{article.readTime}</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        {/* Newsletter Subscription */}
+        <div className="bg-gradient-to-r from-cyan-500/10 to-transparent p-8 rounded-2xl border border-cyan-500/20">
+          <div className="max-w-2xl mx-auto text-center">
+            <h3 className="text-2xl font-bold text-white mb-4">Stay in the Loop</h3>
+            <p className="text-gray-300 mb-6">
+              Get the latest articles, tutorials, and insights delivered straight to your inbox. Join our community of
+              developers and tech enthusiasts.
             </p>
-            <Button className="bg-cyan-400 text-black hover:bg-cyan-300 w-full sm:w-auto">Subscribe</Button>
-          </motion.div>
-
-          <SocialIcons />
+            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+              <Input
+                type="email"
+                placeholder="Enter your email address"
+                className="bg-gray-900 border-gray-700 text-white focus:border-cyan-500"
+              />
+              <Button className="bg-cyan-500 hover:bg-cyan-600 text-black font-semibold whitespace-nowrap">
+                Subscribe Now
+              </Button>
+            </div>
+          </div>
         </div>
-      </section>
+      </div>
     </div>
   )
 }
