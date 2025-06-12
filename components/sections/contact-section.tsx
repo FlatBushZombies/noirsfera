@@ -11,6 +11,8 @@ import { CheckCircle, AlertCircle, Loader2 } from "lucide-react"
 
 interface ContactSectionProps {
   id?: string
+  projectsRef?: React.RefObject<HTMLDivElement>
+  onNavigate?: (page: string) => void
 }
 
 interface FormData {
@@ -25,7 +27,7 @@ interface FormStatus {
   message: string
 }
 
-export default function ContactSection({ id }: ContactSectionProps) {
+export default function ContactSection({ id, projectsRef, onNavigate }: ContactSectionProps) {
   const [formData, setFormData] = useState<FormData>({
     fullName: "",
     email: "",
@@ -44,6 +46,18 @@ export default function ContactSection({ id }: ContactSectionProps) {
 
   if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
     throw new Error("EmailJS environment variables are not configured")
+  }
+
+  const handleScrollTo = (targetPage: string, targetRef?: React.RefObject<HTMLDivElement>) => {
+    onNavigate?.(targetPage)
+    setTimeout(() => {
+      if (targetRef?.current) {
+        targetRef.current.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        })
+      }
+    }, 100)
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -152,9 +166,12 @@ export default function ContactSection({ id }: ContactSectionProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
           >
-            <a href="#" className="text-cyan-400 hover:underline text-base">
+            <button
+              onClick={() => handleScrollTo("projects", projectsRef)}
+              className="text-cyan-400 hover:underline text-base hover:cursor-pointer"
+            >
               View our recent work →
-            </a>
+            </button>
           </motion.div>
 
           <motion.div
