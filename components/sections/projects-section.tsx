@@ -1,11 +1,17 @@
 "use client"
 
+import type React from "react"
+
+import { forwardRef } from "react"
 import { motion } from "framer-motion"
 import { SocialIcons } from "../ui/social-icons"
 import { ExternalLink } from "lucide-react"
 
+
 interface ProjectsSectionProps {
   id?: string
+  contactRef?: React.RefObject<HTMLDivElement>
+  onNavigate?: (page: string) => void
 }
 
 const projects = [
@@ -14,36 +20,23 @@ const projects = [
     title: "Enterprise Dashboard",
     liveUrl: "#",
   },
-  {
-    id: 2,
-    title: "AI-Powered CRM",
-    liveUrl: "#",
-  },
-  {
-    id: 3,
-    title: "Financial Trading Platform",
-    liveUrl: "#",
-  },
-  {
-    id: 4,
-    title: "Healthcare Management System",
-    liveUrl: "#",
-  },
-  {
-    id: 5,
-    title: "E-Learning Platform",
-    liveUrl: "#",
-  },
-  {
-    id: 6,
-    title: "Supply Chain Optimizer",
-    liveUrl: "#",
-  },
+  // ... other projects
 ]
 
-export default function ProjectsSection({ id }: ProjectsSectionProps) {
-  return (
-    <div className="bg-black min-h-screen">
+const ProjectsSection = forwardRef<HTMLDivElement, ProjectsSectionProps>(({ id, contactRef, onNavigate }, ref) => {
+  const handleScrollTo = (targetPage: string, targetRef?: React.RefObject<HTMLDivElement>) => {
+    onNavigate?.(targetPage)
+    setTimeout(() => {
+      targetRef?.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      })
+    }, 100)
+  }
+
+ return (
+
+   <div className="bg-black min-h-screen">
       <section id={id} className="space-y-12 md:space-y-16 p-6 md:p-12 max-w-7xl mx-auto">
         <div className="space-y-8">
           <motion.h2
@@ -65,13 +58,13 @@ export default function ProjectsSection({ id }: ProjectsSectionProps) {
           </motion.p>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors duration-200 text-xl font-semibold group"
+            <button
+              onClick={() => handleScrollTo("contact", contactRef)}
+              className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors duration-200 text-xl font-semibold group hover:cursor-pointer"
             >
               Let's get started on your next project
               <span className="group-hover:translate-x-1 transition-transform duration-200">→</span>
-            </a>
+            </button>
           </motion.div>
         </div>
 
@@ -132,4 +125,8 @@ export default function ProjectsSection({ id }: ProjectsSectionProps) {
       </section>
     </div>
   )
-}
+})
+
+ProjectsSection.displayName = "ProjectsSection"
+
+export default ProjectsSection

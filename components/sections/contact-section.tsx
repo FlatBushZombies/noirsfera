@@ -38,14 +38,13 @@ export default function ContactSection({ id }: ContactSectionProps) {
     message: "",
   })
 
-  
- const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+  const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
+  const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
+  const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
 
   if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
-  throw new Error("EmailJS environment variables are not configured");
-}
+    throw new Error("EmailJS environment variables are not configured")
+  }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
