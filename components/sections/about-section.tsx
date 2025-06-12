@@ -35,8 +35,8 @@ export default function AboutSection({ id }: AboutSectionProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
         >
-          A uniquely development agency headed by Developers, Specializing in Web Development, Automation, Data
-          Analysis.
+          A software development agency owned by Developers, specialising in Web Development, Automation, Data Science....
+          <span className="text-cyan-400 underline decoration-cyan-400">click to see more.</span>
         </motion.p>
 
         <motion.p
@@ -45,10 +45,10 @@ export default function AboutSection({ id }: AboutSectionProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
         >
-          Ready to turn your ideas into reality? Here at "Noir Sfera", we are focused on helping you evolve your
-          business, ideas and visions to reach your targeted audience through the creation of engaging, innovative, and
-          high quality software solutions. We are a team of passionate and independent creators, we have pride in these
-          partnerships, and we are always open to future collaborations.
+          Ready to turn your ideas into reality? Here at “Noir Sfera", we are focused on helping you evolve your business, 
+          ideas and visions to reach your targeted audience through the creation of engaging, compelling, and high quality 
+          applications from scratch. Whether you have a clear vision or need assistance in shaping your project, we are
+          here to help. 
         </motion.p>
 
         <div className="grid grid-cols-3 gap-4 mt-8">
@@ -71,7 +71,7 @@ export default function AboutSection({ id }: AboutSectionProps) {
 
         <motion.div className="mt-6" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }}>
           <a href="#" className="text-cyan-400 hover:underline text-sm underline">
-            what we been hacking
+            what we been building
           </a>
           <SocialIcons />
         </motion.div>
