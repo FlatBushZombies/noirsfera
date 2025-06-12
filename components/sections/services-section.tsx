@@ -9,6 +9,7 @@ interface ServicesSectionProps {
 }
 
 export default function ServicesSection({ id }: ServicesSectionProps) {
+  
   const services = Array(6).fill(null)
 
   return (

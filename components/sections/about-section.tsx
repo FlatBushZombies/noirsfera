@@ -36,7 +36,7 @@ export default function AboutSection({ id }: AboutSectionProps) {
           transition={{ delay: 0.4 }}
         >
           A software development agency owned by Developers, specialising in Web Development, Automation, Data Science....
-          <span className="text-cyan-400 underline decoration-cyan-400">click to see more.</span>
+          <a href="#services"><span className="text-cyan-400 underline decoration-cyan-400">click to see more.</span> </a>
         </motion.p>
 
         <motion.p
@@ -70,7 +70,7 @@ export default function AboutSection({ id }: AboutSectionProps) {
         </div>
 
         <motion.div className="mt-6" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }}>
-          <a href="#" className="text-cyan-400 hover:underline text-sm underline">
+          <a href="#projects" className="text-cyan-400 hover:underline text-sm underline">
             what we been building
           </a>
           <SocialIcons />
