@@ -17,10 +17,36 @@ interface ProjectsSectionProps {
 const projects = [
   {
     id: 1,
-    title: "Enterprise Dashboard",
-    liveUrl: "#",
+    title: "Camp Guide Landing Page",
+    liveUrl: "https://resonant-sunflower-1bb1e7.netlify.app/",
   },
-  // ... other projects
+  {
+    id: 2,
+    title: "IBC Communication Protocol",
+    liveUrl: "https://github.com/BrianMakanjira/ibc-go-client",
+  },
+  {
+    id: 3,
+    title: "Article Summarizer",
+    liveUrl: "https://legendary-rabanadas-825160.netlify.app/",
+  },
+  {
+    id: 4,
+    title: "Modern AI Landing Page",
+    liveUrl: "https://brilliant-selkie-8d3439.netlify.app/",
+  },
+  {
+    id: 5,
+    title: "DMB Pay",
+    liveUrl: "https://jocular-sfogliatella-55a4c9.netlify.app/",
+  },
+  {
+    id: 6,
+    title: "Library Backend System",
+    liveUrl: "https://github.com/BrianMakanjira/book-api",
+  }
+
+  
 ]
 
 const ProjectsSection = forwardRef<HTMLDivElement, ProjectsSectionProps>(({ id, contactRef, onNavigate }, ref) => {

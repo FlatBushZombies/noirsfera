@@ -35,7 +35,7 @@ export default function NarStraPortfolio() {
         )
       case "services":
         return (
-          <ServicesSection projectsRef={projectsRef as React.RefObject<HTMLDivElement>} onNavigate={handleNavigate} />
+          <ServicesSection contactRef={contactRef as React.RefObject<HTMLDivElement>} onNavigate={handleNavigate} />
         )
       case "projects":
         return (
