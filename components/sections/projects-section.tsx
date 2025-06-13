@@ -5,7 +5,8 @@ import type React from "react"
 import { forwardRef } from "react"
 import { motion } from "framer-motion"
 import { SocialIcons } from "../ui/social-icons"
-import { ExternalLink } from "lucide-react"
+import { ExternalLink, Compass, Code, Github, Atom, Feather, Gem, Sparkles, BookMarked, ArrowRight } from "lucide-react"
+import Image from "next/image";
 
 
 interface ProjectsSectionProps {
@@ -19,34 +20,68 @@ const projects = [
     id: 1,
     title: "Camp Guide Landing Page",
     liveUrl: "https://resonant-sunflower-1bb1e7.netlify.app/",
+    type: "website",
+    icon: "compass",
+    color: "from-emerald-400 to-teal-300",
+    image:
+      "https://images.pexels.com/photos/2582818/pexels-photo-2582818.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    description: "Interactive guide for camping enthusiasts with location recommendations and equipment lists.",
   },
   {
     id: 2,
     title: "IBC Communication Protocol",
     liveUrl: "https://github.com/BrianMakanjira/ibc-go-client",
+    type: "github",
+    icon: "atom",
+    color: "from-blue-400 to-indigo-300",
+    image:
+      "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    description: "Implementation of Inter-Blockchain Communication protocol for secure cross-chain transactions.",
   },
   {
     id: 3,
     title: "Article Summarizer",
     liveUrl: "https://legendary-rabanadas-825160.netlify.app/",
+    type: "website",
+    icon: "feather",
+    color: "from-purple-400 to-pink-300",
+    image:
+      "https://images.pexels.com/photos/3944454/pexels-photo-3944454.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    description: "AI-powered tool that condenses long articles into concise, readable summaries.",
   },
   {
     id: 4,
     title: "Modern AI Landing Page",
     liveUrl: "https://brilliant-selkie-8d3439.netlify.app/",
+    type: "website",
+    icon: "sparkles",
+    color: "from-amber-400 to-orange-300",
+    image:
+      "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    description: "Sleek, responsive landing page for an AI startup with interactive elements and animations.",
   },
   {
     id: 5,
     title: "DMB Pay",
     liveUrl: "https://jocular-sfogliatella-55a4c9.netlify.app/",
+    type: "website",
+    icon: "gem",
+    color: "from-cyan-400 to-sky-300",
+    image:
+      "https://images.pexels.com/photos/6347707/pexels-photo-6347707.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    description: "Secure digital payment platform with intuitive user interface and real-time transaction tracking.",
   },
   {
     id: 6,
     title: "Library Backend System",
     liveUrl: "https://github.com/BrianMakanjira/book-api",
-  }
-
-  
+    type: "github",
+    icon: "bookMarked",
+    color: "from-rose-400 to-red-300",
+    image:
+      "https://images.pexels.com/photos/590493/pexels-photo-590493.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    description: "Robust API for managing library resources, including books, users, and lending operations.",
+  },
 ]
 
 const ProjectsSection = forwardRef<HTMLDivElement, ProjectsSectionProps>(({ id, contactRef, onNavigate }, ref) => {
@@ -58,6 +93,38 @@ const ProjectsSection = forwardRef<HTMLDivElement, ProjectsSectionProps>(({ id, 
         block: "start",
       })
     }, 100)
+  }
+
+   // Function to get the appropriate icon based on project icon type
+  const getProjectIcon = (iconType: string) => {
+    switch (iconType) {
+      case "compass":
+        return <Compass className="w-8 h-8" />
+      case "atom":
+        return <Atom className="w-8 h-8" />
+      case "feather":
+        return <Feather className="w-8 h-8" />
+      case "sparkles":
+        return <Sparkles className="w-8 h-8" />
+      case "gem":
+        return <Gem className="w-8 h-8" />
+      case "bookMarked":
+        return <BookMarked className="w-8 h-8" />
+      default:
+        return <Code className="w-8 h-8" />
+    }
+  }
+
+  // Function to get the source icon based on project type
+  const getSourceIcon = (type: string) => {
+    switch (type) {
+      case "github":
+        return <Github className="w-4 h-4" />
+      case "website":
+        return <ExternalLink className="w-4 h-4" />
+      default:
+        return <ExternalLink className="w-4 h-4" />
+    }
   }
 
  return (
@@ -115,8 +182,7 @@ const ProjectsSection = forwardRef<HTMLDivElement, ProjectsSectionProps>(({ id, 
             <SocialIcons />
           </div>
         </motion.div>
-
-        {/* Professional Projects Grid - 2 rows x 3 columns */}
+                {/* Professional Projects Grid - 2 rows x 3 columns */}
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8"
           initial={{ opacity: 0 }}
@@ -126,24 +192,67 @@ const ProjectsSection = forwardRef<HTMLDivElement, ProjectsSectionProps>(({ id, 
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
-              className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl overflow-hidden shadow-2xl hover:shadow-cyan-500/10 transition-all duration-500 group border border-gray-700 hover:border-cyan-400"
+              className="rounded-2xl overflow-hidden shadow-2xl hover:shadow-cyan-500/20 transition-all duration-500 group h-[400px] relative"
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 + index * 0.1 }}
               whileHover={{ y: -8, scale: 1.02 }}
             >
-              <div className="p-8 text-center space-y-6">
-                <h3 className="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors duration-300">
-                  {project.title}
-                </h3>
+              {/* Background Image */}
+              <div className="absolute inset-0 w-full h-full">
+                <Image
+                  src={project.image || "/placeholder.svg"}
+                  alt={project.title}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/30"></div>
+              </div>
 
-                <a
-                  href={project.liveUrl}
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold rounded-lg transition-all duration-200 hover:scale-105"
-                >
-                  <ExternalLink className="w-4 h-4" />
-                  View Project
-                </a>
+              {/* Liquid Glass Effect Icon */}
+              <div className="absolute top-6 right-6 z-20">
+                <div className="w-20 h-20 relative group-hover:scale-110 transition-all duration-500">
+                  {/* Glass background with gradient */}
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-br ${project.color} rounded-full opacity-20 blur-md`}
+                  ></div>
+
+                  {/* Glass effect */}
+                  <div className="absolute inset-0 bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-lg"></div>
+
+                  {/* Icon */}
+                  <div className="absolute inset-0 flex items-center justify-center text-white">
+                    {getProjectIcon(project.icon)}
+                  </div>
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="relative z-10 h-full flex flex-col justify-between p-8">
+                <div>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 backdrop-blur-sm text-white rounded-full text-xs font-medium mb-4 border border-white/20">
+                    {getSourceIcon(project.type)}
+                    <span>{project.type === "github" ? "Open Source" : "Web App"}</span>
+                  </span>
+                  <h3 className="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors duration-300 mb-2">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-300 text-sm line-clamp-3">{project.description}</p>
+                </div>
+
+                <div className="mt-auto">
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 border border-white/20"
+                  >
+                    <span>View Project</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                  </a>
+                </div>
               </div>
             </motion.div>
           ))}
