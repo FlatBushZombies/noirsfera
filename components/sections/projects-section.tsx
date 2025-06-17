@@ -27,7 +27,7 @@ const projects = [
     icon: "compass",
     color: "from-emerald-400 to-teal-300",
     image:
-      "https://images.pexels.com/photos/2582818/pexels-photo-2582818.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "/camp.jpeg",
     description: "Interactive guide for camping enthusiasts with location recommendations and equipment lists.",
   },
   {
