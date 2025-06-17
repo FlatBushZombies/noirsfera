@@ -38,7 +38,7 @@ const projects = [
     icon: "atom",
     color: "from-blue-400 to-indigo-300",
     image:
-      "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "/protocol.jpg",
     description: "Implementation of Inter-Blockchain Communication protocol for secure cross-chain transactions.",
   },
   {
@@ -49,7 +49,7 @@ const projects = [
     icon: "feather",
     color: "from-purple-400 to-pink-300",
     image:
-      "https://images.pexels.com/photos/3944454/pexels-photo-3944454.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "/article.jpeg",
     description: "AI-powered tool that condenses long articles into concise, readable summaries.",
   },
   {
@@ -60,7 +60,7 @@ const projects = [
     icon: "sparkles",
     color: "from-amber-400 to-orange-300",
     image:
-      "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "/modern.jpg",
     description: "Sleek, responsive landing page for an AI startup with interactive elements and animations.",
   },
   {
@@ -71,7 +71,7 @@ const projects = [
     icon: "gem",
     color: "from-cyan-400 to-sky-300",
     image:
-      "https://images.pexels.com/photos/6347707/pexels-photo-6347707.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "/dmb-pay.jpg",
     description: "Secure digital payment platform with intuitive user interface and real-time transaction tracking.",
   },
   {
@@ -82,7 +82,7 @@ const projects = [
     icon: "bookMarked",
     color: "from-rose-400 to-red-300",
     image:
-      "https://images.pexels.com/photos/590493/pexels-photo-590493.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "/library.jpg",
     description: "Robust API for managing library resources, including books, users, and lending operations.",
   },
 ]
