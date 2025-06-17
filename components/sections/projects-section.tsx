@@ -71,7 +71,7 @@ const projects = [
     icon: "gem",
     color: "from-cyan-400 to-sky-300",
     image:
-      "/dmb-pay.jpg",
+      "/dmb-pay.jpeg",
     description: "Secure digital payment platform with intuitive user interface and real-time transaction tracking.",
   },
   {
