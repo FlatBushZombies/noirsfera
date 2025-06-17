@@ -15,6 +15,7 @@ export default function NarStraPortfolio() {
   const [currentPage, setCurrentPage] = useState("about")
   const aboutRef = useRef<HTMLDivElement>(null)
   const servicesRef = useRef<HTMLDivElement>(null)
+  const newsRef = useRef<HTMLDivElement>(null)
   const projectsRef = useRef<HTMLDivElement>(null)
   const contactRef = useRef<HTMLDivElement>(null)
 
@@ -42,7 +43,7 @@ export default function NarStraPortfolio() {
           <ProjectsSection contactRef={contactRef as React.RefObject<HTMLDivElement>} onNavigate={handleNavigate} />
         )
       case "news":
-        return <NewsSection />
+        return <NewsSection newsRef={newsRef as React.RefObject<HTMLDivElement>} onNavigate={handleNavigate}/>
       case "contact":
         return (
           <ContactSection projectsRef={projectsRef as React.RefObject<HTMLDivElement>} onNavigate={handleNavigate} />

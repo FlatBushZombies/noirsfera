@@ -90,22 +90,7 @@ export function Features() {
                 {/* CTA with perfect alignment */}
                 <div className="mt-auto">
                   <div className="flex items-center gap-2 text-sm font-medium text-cyan-400 opacity-90 group-hover:opacity-100 transition-opacity">
-                    <span>Explore service</span>
-                    <svg 
-                      width="16" 
-                      height="16" 
-                      viewBox="0 0 16 16" 
-                      fill="none" 
-                      className="transition-transform group-hover:translate-x-1"
-                    >
-                      <path 
-                        d="M5.75 12.5L10.25 8L5.75 3.5" 
-                        stroke="currentColor" 
-                        strokeWidth="1.5" 
-                        strokeLinecap="round" 
-                        strokeLinejoin="round"
-                      />
-                    </svg>
+
                   </div>
                 </div>
               </div>

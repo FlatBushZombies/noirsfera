@@ -118,7 +118,8 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: 'Cascadia Mono', monospace;
+
+    font-family: 'Inter', sans-serif;
   }
 }
 

@@ -12,8 +12,11 @@ import Image from "next/image";
 interface ProjectsSectionProps {
   id?: string
   contactRef?: React.RefObject<HTMLDivElement>
+  newsRef?: React.RefObject<HTMLDivElement>
   onNavigate?: (page: string) => void
 }
+
+
 
 const projects = [
   {
@@ -84,7 +87,7 @@ const projects = [
   },
 ]
 
-const ProjectsSection = forwardRef<HTMLDivElement, ProjectsSectionProps>(({ id, contactRef, onNavigate }, ref) => {
+const ProjectsSection = forwardRef<HTMLDivElement, ProjectsSectionProps>(({ id, contactRef,newsRef, onNavigate }, ref) => {
   const handleScrollTo = (targetPage: string, targetRef?: React.RefObject<HTMLDivElement>) => {
     onNavigate?.(targetPage)
     setTimeout(() => {
@@ -99,19 +102,19 @@ const ProjectsSection = forwardRef<HTMLDivElement, ProjectsSectionProps>(({ id, 
   const getProjectIcon = (iconType: string) => {
     switch (iconType) {
       case "compass":
-        return <Compass className="w-8 h-8" />
+        return <Compass className="w-6 h-6" />
       case "atom":
-        return <Atom className="w-8 h-8" />
+        return <Atom className="w-6 h-6" />
       case "feather":
-        return <Feather className="w-8 h-8" />
+        return <Feather className="w-6 h-6" />
       case "sparkles":
-        return <Sparkles className="w-8 h-8" />
+        return <Sparkles className="w-6 h-6" />
       case "gem":
-        return <Gem className="w-8 h-8" />
+        return <Gem className="w-6 h-6" />
       case "bookMarked":
-        return <BookMarked className="w-8 h-8" />
+        return <BookMarked className="w-6 h-6" />
       default:
-        return <Code className="w-8 h-8" />
+        return <Code className="w-6 h-6" />
     }
   }
 
@@ -119,11 +122,11 @@ const ProjectsSection = forwardRef<HTMLDivElement, ProjectsSectionProps>(({ id, 
   const getSourceIcon = (type: string) => {
     switch (type) {
       case "github":
-        return <Github className="w-4 h-4" />
+        return <Github className="w-3 h-3" />
       case "website":
-        return <ExternalLink className="w-4 h-4" />
+        return <ExternalLink className="w-3 h-3" />
       default:
-        return <ExternalLink className="w-4 h-4" />
+        return <ExternalLink className="w-3 h-3" />
     }
   }
 
@@ -133,7 +136,7 @@ const ProjectsSection = forwardRef<HTMLDivElement, ProjectsSectionProps>(({ id, 
       <section id={id} className="space-y-12 md:space-y-16 p-6 md:p-12 max-w-7xl mx-auto">
         <div className="space-y-8">
           <motion.h2
-            className="text-4xl md:text-5xl font-bold text-white tracking-tight"
+            className="text-xl md:text-2xl font-bold text-white tracking-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -142,7 +145,7 @@ const ProjectsSection = forwardRef<HTMLDivElement, ProjectsSectionProps>(({ id, 
           </motion.h2>
 
           <motion.p
-            className="text-gray-300 text-xl md:text-2xl max-w-3xl leading-relaxed"
+            className="text-gray-300 text-sm md:text-md max-w-3xl leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
@@ -153,7 +156,7 @@ const ProjectsSection = forwardRef<HTMLDivElement, ProjectsSectionProps>(({ id, 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
             <button
               onClick={() => handleScrollTo("contact", contactRef)}
-              className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors duration-200 text-xl font-semibold group hover:cursor-pointer"
+              className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors duration-200 text-sm font-semibold group hover:cursor-pointer"
             >
               Let's get started on your next project
               <span className="group-hover:translate-x-1 transition-transform duration-200">→</span>
@@ -168,7 +171,7 @@ const ProjectsSection = forwardRef<HTMLDivElement, ProjectsSectionProps>(({ id, 
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
         >
-          <p className="text-gray-400 text-lg md:text-xl leading-relaxed max-w-5xl">
+          <p className="text-gray-400 text-sm md:text-md leading-relaxed max-w-5xl">
             We build in public - raw, real, and right in front of you. No hype, just progress you can see and be part
             of. Our early access to what we are working on is what keeps the ball rolling forward. As a team of
             passionate and independent creators, we have pride in these partnerships, and we are always open to future
@@ -176,9 +179,13 @@ const ProjectsSection = forwardRef<HTMLDivElement, ProjectsSectionProps>(({ id, 
           </p>
 
           <div className="space-y-6">
-            <p className="text-xl text-gray-200 font-semibold">
-              Subscribe to our newsletter to be updated about new projects
-            </p>
+            <button
+              onClick={() => handleScrollTo("news", newsRef)}
+              className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors duration-200 text-sm font-semibold group hover:cursor-pointer"
+            >
+             Subscribe to our newsletter to be updated about new projects 
+              <span className="group-hover:translate-x-1 transition-transform duration-200">→</span>
+            </button>
             <SocialIcons />
           </div>
         </motion.div>

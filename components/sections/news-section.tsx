@@ -1,13 +1,29 @@
 "use client"
 
 import { useState } from "react"
+import { forwardRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Search, Calendar, User, Clock, ArrowRight } from "lucide-react"
 
-export default function NewsSection() {
+interface NewsSectionProps {
+  id?: string
+  newsRef?: React.RefObject<HTMLDivElement>
+  onNavigate?: (page: string) => void
+}
+
+const NewsSection = forwardRef<HTMLDivElement, NewsSectionProps>(({ id, newsRef, onNavigate }, ref) => {
+  const handleScrollTo = (targetPage: string, targetRef?: React.RefObject<HTMLDivElement>) => {
+      onNavigate?.(targetPage)
+      setTimeout(() => {
+        targetRef?.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        })
+      }, 100)
+    }
   const [searchQuery, setSearchQuery] = useState("")
 
   const categories = [
@@ -45,32 +61,12 @@ export default function NewsSection() {
       category: "Web Development",
       image: "https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=600",
     },
-    {
-      id: 3,
-      title: "The rise of edge computing: Why your apps need to get closer to users",
-      excerpt: "Understanding edge computing and its impact on application performance and user experience.",
-      author: "Marcus Rodriguez",
-      date: "Dec 13, 2024",
-      readTime: "7 min read",
-      category: "Performance",
-      image: "https://images.pexels.com/photos/325229/pexels-photo-325229.jpeg?auto=compress&cs=tinysrgb&w=600",
-    },
   ]
 
   const allArticles = [
     ...featuredArticles,
     {
-      id: 4,
-      title: "TypeScript 5.0 brings new features that will boost your productivity",
-      excerpt: "Exploring the latest TypeScript features and how they improve developer productivity and code quality.",
-      author: "Elena Vasquez",
-      date: "Dec 12, 2024",
-      readTime: "5 min read",
-      category: "Web Development",
-      image: "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=600",
-    },
-    {
-      id: 5,
+      id: 3,
       title: "Serverless architecture: Building scalable applications without managing servers",
       excerpt: "A comprehensive guide to serverless architecture and its benefits for modern application development.",
       author: "David Park",
@@ -78,39 +74,7 @@ export default function NewsSection() {
       readTime: "9 min read",
       category: "DevOps",
       image: "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=600",
-    },
-    {
-      id: 6,
-      title: "Web3 and blockchain integration: The future of decentralized applications",
-      excerpt: "Understanding Web3 technologies and how to integrate blockchain features into modern web applications.",
-      author: "Alex Thompson",
-      date: "Dec 10, 2024",
-      readTime: "10 min read",
-      category: "Web Development",
-      image: "https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=600",
-    },
-    {
-      id: 7,
-      title: "Mastering React Server Components: A Complete Guide",
-      excerpt:
-        "Learn how to leverage React Server Components for better performance and user experience in your applications.",
-      author: "James Wilson",
-      date: "Dec 9, 2024",
-      readTime: "12 min read",
-      category: "Web Development",
-      image: "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=600",
-    },
-    {
-      id: 8,
-      title: "Database Optimization Techniques for High-Traffic Applications",
-      excerpt:
-        "Strategies to optimize your database performance when dealing with millions of users and high traffic loads.",
-      author: "Maria Garcia",
-      date: "Dec 8, 2024",
-      readTime: "8 min read",
-      category: "Performance",
-      image: "https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=600",
-    },
+    }
   ]
 
   return (
@@ -271,3 +235,8 @@ export default function NewsSection() {
     </div>
   )
 }
+)
+
+NewsSection.displayName = "NewsSection"
+
+export default NewsSection
