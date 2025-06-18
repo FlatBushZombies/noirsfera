@@ -47,7 +47,7 @@ const NewsSection = forwardRef<HTMLDivElement, NewsSectionProps>(({ id, newsRef,
       date: "Dec 15, 2024",
       readTime: "8 min read",
       category: "AI & Machine Learning",
-      image: "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: "/ai-ml.jpg",
       featured: true,
     },
     {
@@ -59,7 +59,7 @@ const NewsSection = forwardRef<HTMLDivElement, NewsSectionProps>(({ id, newsRef,
       date: "Dec 14, 2024",
       readTime: "6 min read",
       category: "Web Development",
-      image: "https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=600",
+      image: "/node.jpg",
     },
   ]
 
@@ -73,7 +73,7 @@ const NewsSection = forwardRef<HTMLDivElement, NewsSectionProps>(({ id, newsRef,
       date: "Dec 11, 2024",
       readTime: "9 min read",
       category: "DevOps",
-      image: "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=600",
+      image: "/server.jpg",
     }
   ]
 
