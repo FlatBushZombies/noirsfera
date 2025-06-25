@@ -26,8 +26,7 @@ const projects = [
     type: "website",
     icon: "compass",
     color: "from-emerald-400 to-teal-300",
-    image:
-      "/camp.jpeg",
+    image: "/camp.jpeg",
     description: "Interactive guide for camping enthusiasts with location recommendations and equipment lists.",
   },
   {
@@ -37,8 +36,7 @@ const projects = [
     type: "github",
     icon: "atom",
     color: "from-blue-400 to-indigo-300",
-    image:
-      "/protocol.jpg",
+    image: "/protocol.jpg",
     description: "Implementation of Inter-Blockchain Communication protocol for secure cross-chain transactions.",
   },
   {
@@ -48,8 +46,7 @@ const projects = [
     type: "website",
     icon: "feather",
     color: "from-purple-400 to-pink-300",
-    image:
-      "/article.jpeg",
+    image: "/article.jpeg",
     description: "AI-powered tool that condenses long articles into concise, readable summaries.",
   },
   {
@@ -59,8 +56,7 @@ const projects = [
     type: "website",
     icon: "sparkles",
     color: "from-amber-400 to-orange-300",
-    image:
-      "/modern.jpg",
+    image: "/modern.jpg",
     description: "Sleek, responsive landing page for an AI startup with interactive elements and animations.",
   },
   {
@@ -70,8 +66,7 @@ const projects = [
     type: "website",
     icon: "gem",
     color: "from-cyan-400 to-sky-300",
-    image:
-      "/dmb-pay.jpeg",
+    image: "/dmb-pay.jpeg",
     description: "Secure digital payment platform with intuitive user interface and real-time transaction tracking.",
   },
   {
@@ -81,10 +76,19 @@ const projects = [
     type: "github",
     icon: "bookMarked",
     color: "from-rose-400 to-red-300",
-    image:
-      "/library.jpg",
+    image: "/library.jpg",
     description: "Robust API for managing library resources, including books, users, and lending operations.",
   },
+  {
+    id: 7,
+    title: "TUT School Website",
+    liveUrl: "https://tutschool.ru",
+    type: "website",
+    icon: "school",
+    color: "from-violet-400 to-purple-300",
+    image: "/institution.jpeg", 
+    description: "Comprehensive website for TUT School, a language and arts institution featuring course information, enrollment, and student resources.",
+  }
 ]
 
 const ProjectsSection = forwardRef<HTMLDivElement, ProjectsSectionProps>(({ id, contactRef,newsRef, onNavigate }, ref) => {
