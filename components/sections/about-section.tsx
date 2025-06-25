@@ -28,6 +28,31 @@ const AboutSection = forwardRef<HTMLDivElement, AboutSectionProps>(
       }, 100)
     }
 
+    const teamMembers = [
+      {
+        name: "Lackson",
+        title: "Lead Engineer",
+        roles: [
+          "Aeronautical Engineer",
+          "Software Architecture Specialist",
+          "Systems Design Expert",
+          "Technical Project Lead",
+        ],
+        image: "/profiles/lackson.jpg",
+      },
+      {
+        name: "Brian",
+        title: "FullStack Developer",
+        roles: [
+          "Fullstack Engineer",
+          "Frontend Development Specialist",
+          "Backend Systems Architect",
+          "Database Design Expert",
+        ],
+        image: "/placeholder.svg?height=400&width=300",
+      },
+    ]
+
     return (
       <div className="min-h-screen bg-black" ref={ref}>
         <section id={id} className="space-y-4 p-4 md:p-8">
@@ -77,21 +102,65 @@ const AboutSection = forwardRef<HTMLDivElement, AboutSectionProps>(
             </motion.p>
 
             <div className="grid grid-cols-3 gap-4 mt-8">
+              {teamMembers.map((member, index) => (
+                <motion.div
+                  key={member.name}
+                  className="aspect-[3/4] bg-black border border-gray-800 overflow-hidden rounded-md relative group cursor-pointer"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.6 + index * 0.1 }}
+                  whileHover={{ scale: 1.02 }}
+                >
+                  <Image
+                    src={member.image || "/placeholder.svg"}
+                    alt={`${member.name} - ${member.title}`}
+                    width={300}
+                    height={400}
+                    className="object-cover w-full h-full transition-all duration-500 group-hover:scale-105"
+                  />
+
+                  {/* Professional Role Overlay - Only visible on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/20 opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end">
+                    <div className="p-4 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                      <h4 className="text-lg font-bold mb-1 text-white">{member.name}</h4>
+                      <p className="text-cyan-400 text-sm font-medium mb-3 border-b border-cyan-400/30 pb-2">
+                        {member.title}
+                      </p>
+
+                      {/* Professional Roles List */}
+                      <div className="space-y-1">
+                        <p className="text-xs text-gray-300 uppercase tracking-wide mb-2 font-medium">
+                          Professional Roles
+                        </p>
+                        {member.roles.map((role, roleIndex) => (
+                          <div
+                            key={roleIndex}
+                            className="flex items-center text-xs text-gray-200 opacity-0 group-hover:opacity-100 transition-all duration-300"
+                            style={{ transitionDelay: `${100 + roleIndex * 50}ms` }}
+                          >
+                            <div className="w-1 h-1 bg-cyan-400 rounded-full mr-2 flex-shrink-0"></div>
+                            <span>{role}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Subtle border glow on hover */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                    <div className="absolute inset-0 border border-cyan-400/20 rounded-md" />
+                  </div>
+                </motion.div>
+              ))}
+
+              {/* Empty third column for future team member */}
               <motion.div
-                className="aspect-[3/4] bg-black border border-gray-800 overflow-hidden rounded-md"
+                className="aspect-[3/4] bg-black border border-gray-800 rounded-md border-dashed flex items-center justify-center group cursor-pointer hover:border-gray-600 transition-colors duration-300"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.6 }}
+                transition={{ delay: 0.8 }}
               >
-                <Image
-                  src="/profiles/lackson.jpg"
-                  alt="Team member"
-                  width={300}
-                  height={400}
-                  className="object-cover w-full h-full"
-                />
               </motion.div>
-              <div className="aspect-[3/4] bg-black border border-gray-800 rounded-md"></div>
             </div>
 
             <motion.div className="mt-6" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }}>
