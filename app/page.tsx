@@ -66,7 +66,7 @@ export default function NarStraPortfolio() {
         <AppSidebar currentPage={currentPage} onPageChange={setCurrentPage} />
         <SidebarInset className="flex-1 md:ml-4">
           <div className="md:hidden">
-            <SidebarTrigger className="fixed top-4 left-4 z-50 bg-black border border-gray-700 text-white hover:text-cyan-400" />
+            <SidebarTrigger className="fixed top-4 left-4 z-50 bg-black border border-gray-700 text-white hover:text-cyan-800" />
           </div>
           {renderPage()}
         </SidebarInset>
