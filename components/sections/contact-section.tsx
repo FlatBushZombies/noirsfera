@@ -1,10 +1,8 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { motion } from "framer-motion"
-import emailjs from "@emailjs/browser"
 import { SocialIcons } from "../ui/social-icons"
 import { Button } from "@/components/ui/button"
 import { CheckCircle, AlertCircle, Loader2 } from "lucide-react"
@@ -39,14 +37,6 @@ export default function ContactSection({ id, projectsRef, onNavigate }: ContactS
     type: "idle",
     message: "",
   })
-
-  const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
-  const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
-  const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
-
-  if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
-    throw new Error("EmailJS environment variables are not configured")
-  }
 
   const handleScrollTo = (targetPage: string, targetRef?: React.RefObject<HTMLDivElement>) => {
     onNavigate?.(targetPage)
@@ -96,16 +86,22 @@ export default function ContactSection({ id, projectsRef, onNavigate }: ContactS
     setStatus({ type: "loading", message: "Sending message..." })
 
     try {
-      // EmailJS template parameters
-      const templateParams = {
-        from_name: formData.fullName,
-        from_email: formData.email,
-        subject: formData.subject,
-        message: formData.message,
-        to_email: "floatycodepins@gmail.com",
-      }
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          from: formData.email,
+          name: formData.fullName,
+          subject: formData.subject,
+          message: formData.message,
+        }),
+      })
 
-      await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
+      if (!response.ok) {
+        throw new Error('Failed to send message')
+      }
 
       setStatus({
         type: "success",
@@ -120,7 +116,7 @@ export default function ContactSection({ id, projectsRef, onNavigate }: ContactS
         message: "",
       })
     } catch (error) {
-      console.error("EmailJS error:", error)
+      console.error("Email sending error:", error)
       setStatus({
         type: "error",
         message: "Failed to send message. Please try again or contact us directly.",

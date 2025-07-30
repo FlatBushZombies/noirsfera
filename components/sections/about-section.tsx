@@ -152,15 +152,6 @@ const AboutSection = forwardRef<HTMLDivElement, AboutSectionProps>(
                   </div>
                 </motion.div>
               ))}
-
-              {/* Empty third column for future team member */}
-              <motion.div
-                className="aspect-[3/4] bg-black border border-gray-800 rounded-md border-dashed flex items-center justify-center group cursor-pointer hover:border-gray-600 transition-colors duration-300"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.8 }}
-              >
-              </motion.div>
             </div>
 
             <motion.div className="mt-6" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }}>
