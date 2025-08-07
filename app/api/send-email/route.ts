@@ -8,7 +8,7 @@ export async function POST(request: Request) {
     const { from, name, subject, message } = await request.json()
     
     const { data, error } = await resend.emails.send({
-      from: 'Acme <onboarding@resend.dev>', // Update with your domain
+      from: 'onboarding@resend.dev', // Update with your domain
       to: ['noirsfera@gmail.com'], // Update with your email
       subject: subject,
       html: `
