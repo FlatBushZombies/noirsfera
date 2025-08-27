@@ -10,6 +10,7 @@ import ServicesSection from "@/components/sections/services-section"
 import ProjectsSection from "@/components/sections/projects-section"
 import NewsSection from "@/components/sections/news-section"
 import ContactSection from "@/components/sections/contact-section"
+import TestimonialsSection from "@/components/sections/testimonials-section"
 
 export default function NarStraPortfolio() {
   const [currentPage, setCurrentPage] = useState("about")
@@ -42,8 +43,12 @@ export default function NarStraPortfolio() {
         return (
           <ProjectsSection contactRef={contactRef as React.RefObject<HTMLDivElement>} onNavigate={handleNavigate} />
         )
+      case "testimonials":
+        return (
+          <TestimonialsSection contactRef={contactRef as React.RefObject<HTMLDivElement>} onNavigate={handleNavigate} />
+        )
       case "news":
-        return <NewsSection newsRef={newsRef as React.RefObject<HTMLDivElement>} onNavigate={handleNavigate}/>
+        return <NewsSection newsRef={newsRef as React.RefObject<HTMLDivElement>} onNavigate={handleNavigate} />
       case "contact":
         return (
           <ContactSection projectsRef={projectsRef as React.RefObject<HTMLDivElement>} onNavigate={handleNavigate} />

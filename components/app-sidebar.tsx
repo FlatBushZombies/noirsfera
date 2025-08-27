@@ -1,12 +1,11 @@
 "use client"
 
-import { Briefcase, FolderOpen, Newspaper, Mail, Info} from "lucide-react"
+import { Briefcase, FolderOpen, Newspaper, Mail, Info, MessageSquare } from "lucide-react"
 import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -28,6 +27,11 @@ const menuItems = [
     title: "Projects",
     url: "/projects",
     icon: FolderOpen,
+  },
+  {
+    title: "Testimonials",
+    url: "/testimonials",
+    icon: MessageSquare,
   },
   {
     title: "News",
@@ -59,22 +63,21 @@ export function AppSidebar({ currentPage, onPageChange }: AppSidebarProps) {
               {menuItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton
-                   asChild
-                  isActive={currentPage === item.title.toLowerCase()}
-                   className="text-white hover:text-cyan-400 hover:bg-gray-800 data-[active=true]:bg-gray-800 data-[active=true]:text-cyan-400 p-6 transition-transform duration-300 hover:translate-x-2 mb-2"
+                    asChild
+                    isActive={currentPage === item.title.toLowerCase()}
+                    className="text-white hover:text-cyan-400 hover:bg-gray-800 data-[active=true]:bg-gray-800 data-[active=true]:text-cyan-400 p-6 transition-transform duration-300 hover:translate-x-2 mb-2"
                   >
-  <button
-    type="button"
-    onClick={() => onPageChange(item.title.toLowerCase())}
-    className="group flex items-center gap-5"
-  >
-    <div className="w-12 h-12 flex items-center justify-center rounded-full transition-all duration-300 group-hover:border-2 group-hover:border-white">
-      <item.icon className="w-4 h-4" />
-    </div>
-    <span className="text-xl">{item.title}</span>
-  </button>
-</SidebarMenuButton>
-
+                    <button
+                      type="button"
+                      onClick={() => onPageChange(item.title.toLowerCase())}
+                      className="group flex items-center gap-5"
+                    >
+                      <div className="w-12 h-12 flex items-center justify-center rounded-full transition-all duration-300 group-hover:border-2 group-hover:border-white">
+                        <item.icon className="w-4 h-4" />
+                      </div>
+                      <span className="text-xl">{item.title}</span>
+                    </button>
+                  </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
