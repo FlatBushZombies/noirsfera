@@ -19,9 +19,9 @@ export default function TestimonialsSection({ onNavigate, contactRef }: Testimon
     {
       id: "tutschool",
       projectName: "Tut School - Language Learning Platform",
-      clientName: "Elena Volkov",
+      clientName: "Yulia ",
       clientRole: "Founder & Director",
-      clientAvatar: "/",
+      clientAvatar: "/profiles/Yulia.jpg",
       rating: 5,
       testimonial:
         "Working with this team was exceptional. They delivered a modern, responsive website that perfectly captures our language school's mission. The multilingual support and mobile optimization exceeded our expectations. Our student enrollment increased by 40% within the first month of launch.",
