@@ -3,7 +3,6 @@
 import type React from "react"
 import { useState, useEffect } from "react"
 import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Star, ExternalLink, Quote, ChevronLeft, ChevronRight } from "lucide-react"
 
@@ -29,10 +28,9 @@ export default function TestimonialsSection({ onNavigate, contactRef }: Testimon
       projectImage: "/desktop.png",
       mobileImage: "/mobile.jpg",
       projectUrl: "https://tutschool.ru",
-      completionDate: "March 2024",
+      completionDate: "June 2025",
       category: "Education & E-learning",
     },
-
   ]
 
   useEffect(() => {
@@ -84,27 +82,50 @@ export default function TestimonialsSection({ onNavigate, contactRef }: Testimon
                   <Card className="bg-white text-black overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 max-w-4xl mx-auto">
                     <CardContent className="p-0">
                       <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[350px]">
-                        {/* Left side - Project Demo */}
-                        <div className="relative bg-gray-50 p-6 flex items-center justify-center">
-                          <div className="flex items-center justify-center space-x-8 w-full">
-                            {/* Desktop Preview */}
-                            <div className="relative flex-shrink-0 group">
-                              <img
-                                src={testimonial.projectImage || "/placeholder.svg"}
-                                alt="Desktop Preview"
-                                className="w-64 h-40 object-cover rounded-lg shadow-md border transition-transform duration-300 group-hover:-translate-y-2"
-                              />
-                              <Badge className="absolute top-2 left-2 bg-blue-500 text-white text-xs">Desktop</Badge>
+                        {/* Left side - Project Demo with Liquid Glass Effect */}
+                        <div className="relative bg-gradient-to-br from-blue-50 via-purple-50 to-cyan-50 p-8 flex items-center justify-center overflow-hidden">
+                          {/* Background decorative elements */}
+                          <div className="absolute top-4 right-4 w-16 h-16 bg-gradient-to-br from-cyan-400/20 to-blue-500/20 rounded-2xl rotate-12 blur-sm"></div>
+                          <div className="absolute bottom-6 left-6 w-12 h-12 bg-gradient-to-br from-purple-400/20 to-pink-500/20 rounded-xl -rotate-12 blur-sm"></div>
+
+                          {/* Liquid Glass Container */}
+                          <div className="relative group">
+                            {/* Glass card with backdrop blur */}
+                            <div className="relative bg-white/20 backdrop-blur-xl border border-white/30 rounded-2xl p-6 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:-translate-y-2">
+                              {/* Browser mockup header */}
+                              <div className="flex items-center space-x-2 mb-4 bg-white/40 backdrop-blur-sm rounded-t-lg px-4 py-2 border-b border-white/20">
+                                <div className="flex space-x-1.5">
+                                  <div className="w-3 h-3 bg-red-400 rounded-full"></div>
+                                  <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                                  <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+                                </div>
+                                <div className="flex-1 bg-white/30 rounded-md px-3 py-1 ml-4">
+                                  <div className="text-xs text-gray-600 truncate">{testimonial.projectUrl}</div>
+                                </div>
+                              </div>
+
+                              {/* Project preview image */}
+                              <div className="relative overflow-hidden rounded-lg bg-white/10 backdrop-blur-sm">
+                                <img
+                                  src={
+                                    testimonial.projectImage ||
+                                    "/placeholder.svg?height=300&width=400&query=modern website preview"
+                                  }
+                                  alt="Desktop Preview"
+                                  className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-105"
+                                />
+                                {/* Overlay gradient for depth */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent"></div>
+                              </div>
+
+                              {/* Floating badge */}
+                              <div className="absolute -top-2 -right-2 bg-gradient-to-r from-cyan-400 to-blue-500 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-lg">
+                                Live Project
+                              </div>
                             </div>
 
-                            <div className="relative flex-shrink-0 group">
-                              <img
-                                src={testimonial.mobileImage || "/placeholder.svg"}
-                                alt="Mobile Preview"
-                                className="w-28 h-48 object-cover rounded-lg shadow-md border transition-transform duration-300 group-hover:-translate-y-2"
-                              />
-                              <Badge className="absolute top-1 left-1 bg-purple-500 text-white text-xs">Mobile</Badge>
-                            </div>
+                            {/* Glow effect */}
+                            <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 via-blue-500/20 to-purple-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
                           </div>
                         </div>
 
@@ -126,7 +147,10 @@ export default function TestimonialsSection({ onNavigate, contactRef }: Testimon
                           {/* Client Info */}
                           <div className="flex items-center space-x-3 mb-4">
                             <img
-                              src={testimonial.clientAvatar || "/placeholder.svg"}
+                              src={
+                                testimonial.clientAvatar ||
+                                "/placeholder.svg?height=40&width=40&query=professional headshot"
+                              }
                               alt={testimonial.clientName}
                               className="w-10 h-10 rounded-full object-cover"
                             />

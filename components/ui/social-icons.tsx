@@ -9,25 +9,25 @@ export function SocialIcons() {
       name: "WhatsApp",
       icon: <FaWhatsapp className="w-4 h-4 text-black" />,
       url: "https://wa.me/79778148423",
-      bgColor: "bg-cyan-100 hover:bg-cyan-200" // Light cyan background
+      bgColor: "bg-cyan-100 hover:bg-cyan-200" 
     },
     {
       name: "Telegram",
       icon: <FaTelegram className="w-4 h-4 text-black" />,
-      url: "https://t.me/yourusername",
-      bgColor: "bg-cyan-200 hover:bg-cyan-300" // Medium cyan background
+      url: "https://t.me/@itslucki",
+      bgColor: "bg-cyan-200 hover:bg-cyan-300" 
     },
     {
       name: "Instagram",
       icon: <FaInstagram className="w-4 h-4 text-black" />,
       url: "https://www.instagram.com/noirsfera",
-      bgColor: "bg-cyan-300 hover:bg-cyan-400" // Darker cyan background
+      bgColor: "bg-cyan-300 hover:bg-cyan-400" 
     },
     {
       name: "Twitter",
       icon: <FaTwitter className="w-4 h-4 text-black" />,
       url: "https://x.com/from_noirsfera",
-      bgColor: "bg-cyan-400 hover:bg-cyan-500" // Cyan-400 as base
+      bgColor: "bg-cyan-400 hover:bg-cyan-500" 
     }
   ]
 

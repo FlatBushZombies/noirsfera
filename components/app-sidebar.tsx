@@ -70,12 +70,12 @@ export function AppSidebar({ currentPage, onPageChange }: AppSidebarProps) {
                     <button
                       type="button"
                       onClick={() => onPageChange(item.title.toLowerCase())}
-                      className="group flex items-center gap-5"
+                      className="group flex items-center gap-3"
                     >
-                      <div className="w-12 h-12 flex items-center justify-center rounded-full transition-all duration-300 group-hover:border-2 group-hover:border-white">
+                      <div className="w-8 h-8 flex items-center justify-center rounded-full transition-all duration-300 group-hover:border-2 group-hover:border-white">
                         <item.icon className="w-4 h-4" />
                       </div>
-                      <span className="text-xl">{item.title}</span>
+                      <span className="text-lg">{item.title}</span>
                     </button>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
