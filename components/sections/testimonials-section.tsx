@@ -24,7 +24,7 @@ export default function TestimonialsSection({ onNavigate, contactRef }: Testimon
       clientAvatar: "/profiles/Yulia.jpg",
       rating: 5,
       testimonial:
-        "Working with this team was exceptional. They delivered a modern, responsive website that perfectly captures our language school's mission. The multilingual support and mobile optimization exceeded our expectations. Our student enrollment increased by 40% within the first month of launch.",
+        "Я обратилась в компанию Нуарсфера с запросом на создание сайта для языковой студии. Сначала обсудили техническое задание. Ребята задавали много вопросов, чтобы учесть все пожелания. В итоге мне очень понравилось то, что получилось - стильный и современный сайт, со всей необходимой информацией и возможностью размещать акции на встроенных баннерах. Очень рада сотрудничеству и благодарю за отличный результат!",
       projectImage: "/desktop.png",
       mobileImage: "/mobile.jpg",
       projectUrl: "https://tutschool.ru",
