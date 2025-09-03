@@ -140,7 +140,7 @@ export default function TestimonialsSection({ onNavigate, contactRef }: Testimon
 
                           {/* Testimonial Quote */}
                           <Quote className="w-6 h-6 text-gray-400 mb-3" />
-                          <blockquote className="text-base text-gray-800 mb-4 text-pretty leading-relaxed line-clamp-4">
+                          <blockquote className="text-base text-gray-800 mb-4 text-pretty leading-relaxed">
                             "{testimonial.testimonial}"
                           </blockquote>
 
