@@ -10,6 +10,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarHeader,
+  useSidebar,
 } from "@/components/ui/sidebar"
 
 const menuItems = [
@@ -51,6 +52,16 @@ interface AppSidebarProps {
 }
 
 export function AppSidebar({ currentPage, onPageChange }: AppSidebarProps) {
+  const { isMobile, setOpenMobile } = useSidebar()
+
+  const handlePageChange = (page: string) => {
+    onPageChange(page)
+    // Close the mobile drawer when a menu item is clicked (mobile only)
+    if (isMobile) {
+      setOpenMobile(false)
+    }
+  }
+
   return (
     <Sidebar className="border-r border-gray-700 bg-black">
       <SidebarHeader className="p-8 bg-black">
@@ -69,7 +80,7 @@ export function AppSidebar({ currentPage, onPageChange }: AppSidebarProps) {
                   >
                     <button
                       type="button"
-                      onClick={() => onPageChange(item.title.toLowerCase())}
+                      onClick={() => handlePageChange(item.title.toLowerCase())}
                       className="group flex items-center gap-3"
                     >
                       <div className="w-8 h-8 flex items-center justify-center rounded-full transition-all duration-300 group-hover:border-2 group-hover:border-white">
