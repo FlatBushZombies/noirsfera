@@ -83,7 +83,7 @@ const NewsSection = forwardRef<HTMLDivElement, NewsSectionProps>(({ id, newsRef,
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
-            <span className="text-cyan-400">NoirSfera</span> Blog
+            <span className="text-cyan-400">noirSfera</span> Blog
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
             Insights, tutorials, and thoughts on modern web development, AI, and technology trends
