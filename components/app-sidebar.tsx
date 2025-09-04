@@ -65,7 +65,7 @@ export function AppSidebar({ currentPage, onPageChange }: AppSidebarProps) {
   return (
     <Sidebar className="border-r border-gray-700 bg-black">
       <SidebarHeader className="p-8 bg-black">
-        <div className="text-2xl font-bold text-white">noir Sfera</div>
+        <div className="text-2xl font-bold text-white">noirsfera</div>
       </SidebarHeader>
       <SidebarContent className="bg-black">
         <SidebarGroup>
